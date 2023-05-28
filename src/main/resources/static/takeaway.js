@@ -1057,6 +1057,7 @@ function getErrors() {
     return errors;
 
 }
+//dasuni 123
 
 function btnAddMC() {
     if (getErrors() == "") {
