@@ -167,7 +167,7 @@
                                                     </div>
                                                 </div>
 
-                                            <!--reservation amount-->
+                                                <!--reservation amount-->
                                                 <div class="col-md-3">
                                                     <div class="form-group text-dark ">
                                                         <label for="txtReservationAmount" class="  "> <b>Reservation Amount:
@@ -210,7 +210,38 @@
                                             </div>
 
                                             <div class="row m-2 p-3"   >
+                                                <!--Remain Amount-->
+                                                <div class="col-md-3">
+                                                    <div class="form-group text-dark ">
+                                                        <label for="txtRAmount" class=" "><b>Remain Amount
+                                                            <span style="color: red;">*</span></b> </label>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   id="txtRAmount"
+                                                                   placeholder="Enter Remain Amount"
+                                                                   required
+                                                                   data-toggle="tooltip"
+                                                                   data-placement="bottom"
+                                                                   title=""
+                                                                   onkeyup="textFieldBinder(txtRAmount,'^[0-9]{2,5}[.][0-9]{2}$','customerpayment','paidamount','oldcustomerpayment')">
+                                                        </div>
+                                                    </div>
+                                                </div>
 
+                                                <!--Payment Method-->
+                                                <div class="col-md-3">
+                                                    <div class="form-group text-dark ">
+                                                        <label for="cmbPMethod" class=" "><b>Payment Method
+                                                            <span style="color: red;">*</span></b> </label>
+                                                        <div class="input-group">
+                                                            <select id="cmbPMethod"
+                                                                    class="form-control"
+                                                                    onchange="comboBoxBinder(cmbPMethod,'','customerpayment','cpmethod_id','oldcustomerpayment')">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <!--Paid Amount-->
                                                 <div class="col-md-3">
@@ -231,8 +262,7 @@
                                                     </div>
                                                 </div>
 
-
-                                                <!--Reservation-->
+                                                <!--BalanceAmount-->
                                                 <div class="col-md-3" >
                                                     <div class="form-group text-dark  ">
                                                         <label for="txtBalanceAmount" class=""><b>Balance Amount:</b>
@@ -250,6 +280,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                            </div>
+
+                                            <div class="row m-2 p-3"   >
 
                                                 <!--Paid Date Time-->
                                                 <div class="col-md-3">
@@ -269,114 +303,66 @@
                                                     </div>
                                                 </div>
 
-                                                <!--Depositted Date/Time-->
-                                                <div class="col-md-3 ">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="dteDepoDateTime" class="  "><b>Deposited
-                                                            Date/Time:
-                                                        </b> <span style="color: red;">*</span></label>
-                                                        <div class="input-group">
-
-                                                            <input type="datetime-local"
-                                                                   class="form-control"
-                                                                   id="dteDepoDateTime"
-                                                                   placeholder="Enter Deposited Date"
-                                                                   data-toggle="tooltip"
-                                                                   data-placement="bottom"
-                                                                   title="Paid Date"
-                                                                   onchange="datetimeFieldBinder(dteDepoDateTime,'','customerpayment','depositeddatetime','oldcustomerpayment')">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row m-2 p-3"   >
+<!--                                                &lt;!&ndash;Remark&ndash;&gt;-->
+<!--                                                <div class="col-md-3" >-->
+<!--                                                    <div class="form-group text-dark  ">-->
+<!--                                                        <label for="txtRemark" class=""><b>Remark:</b>-->
+<!--                                                        </label>-->
+<!--                                                        <div class="input-group">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   id="txtRemark"-->
+<!--                                                                   placeholder="Enter Remark"-->
+<!--                                                            >-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
 
 
-                                                <!--Payment Method-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="cmbPMethod" class=" "><b>Payment Method
-                                                            <span style="color: red;">*</span></b> </label>
-                                                        <div class="input-group">
-                                                            <select id="cmbPMethod"
-                                                                    class="form-control"
-                                                                    onchange="comboBoxBinder(cmbPMethod,'','customerpayment','cpmethod_id','oldcustomerpayment')">
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <!--Remark-->
-                                                <div class="col-md-3" >
-                                                    <div class="form-group text-dark  ">
-                                                        <label for="txtRemark" class=""><b>Remark:</b>
-                                                        </label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtRemark"
-                                                                   placeholder="Enter Remark"
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Transefered Id-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtTId" class="  "> <b>Transefered Id:
-                                                        </b> <span style="color: red;">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtTId"
-                                                                   placeholder="Enter Transfered Id"
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Bank Name-->
-                                                <div class="col-md-3 ">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtBname" class="  "><b>Bank Name:
-                                                        </b> <span style="color: red;">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtBname"
-                                                                   placeholder="Enter Bank Name"
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row m-2 p-3"   >
-
-
-                                                <!--Transfer Acc Name:-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtTACCname" class=" "><b>Transfer Acc Name:
-                                                            <span style="color: red;">*</span></b> </label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtTACCname"
-                                                                   placeholder="Enter Transfer Acc Name"
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
 
 
                                             </div>
 
+<!--                                            <div class="row m-2 p-3"   >-->
+
+
+<!--                                                &lt;!&ndash;Transfer Acc Name:&ndash;&gt;-->
+<!--                                                <div class="col-md-3">-->
+<!--                                                    <div class="form-group text-dark ">-->
+<!--                                                        <label for="txtTACCname" class=" "><b>Transfer Acc Name:-->
+<!--                                                            <span style="color: red;">*</span></b> </label>-->
+<!--                                                        <div class="input-group">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   id="txtTACCname"-->
+<!--                                                                   placeholder="Enter Transfer Acc Name"-->
+<!--                                                            >-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+
+
+<!--                                            </div>-->
+
+                                            <div class="row m-2 p-3 flex justify-content-around"   >
+
+
+
+                                                <div class="col-md-4 button p-2">
+                                                    <button class="btn border-0 text-white font-weight-bold fs-5
+  "  data-toggle="modal" data-target="#DepositeView">Deposit Information</button>
+                                                </div>
+                                                <div class="col-md-4 button p-2">
+                                                    <button class="btn border-0 text-white font-weight-bold fs-5
+  " data-toggle="modal" data-target="#ChequeView">Cheque Information</button>
+                                                </div>
+                                                <div class="col-md-4 button p-2">
+                                                    <button class="btn border-0 text-white font-weight-bold fs-5
+   " data-toggle="modal" data-target="#MoneyTView" >Online Transfer Information</button>
+                                                </div>
+
+
+                                            </div>
 
                                         </div>
 
@@ -680,6 +666,289 @@
                 </div>
             </div>
         </div>
+
+        <!-- Deposite Modal -->
+        <div class="modal fade position-absolute top-50 " id="DepositeView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Deposite Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+<div class="row">
+
+    <div class="row">
+        <div class="col-md-6">
+            <!--Bank Name-->
+
+                <div class="form-group text-dark ">
+                    <label for="txtBname" class="  "><b>Bank Name:
+                    </b> <span style="color: red;">*</span></label>
+                    <div class="input-group">
+                        <input type="text"
+                               class="form-control"
+                               id="txtBname"
+                               placeholder="Enter Bank Name"
+                        >
+                    </div>
+                </div>
+
+        </div>
+        <div class="col-md-6">
+            <!--Bank Acc No-->
+
+            <div class="form-group text-dark ">
+                <label for="txtBAccNo" class="  "><b>Bank Acc No:
+                </b> <span style="color: red;">*</span></label>
+                <div class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           id="txtBAccNo"
+                           placeholder="Enter Bank Acc No"
+                    >
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <!--Depositted Date/Time-->
+
+                <div class="form-group text-dark ">
+                    <label for="dteDepoDateTime" class="  "><b>Deposited
+                        Date/Time:
+                    </b> <span style="color: red;">*</span></label>
+                    <div class="input-group">
+
+                        <input type="datetime-local"
+                               class="form-control"
+                               id="dteDepoDateTime"
+                               placeholder="Enter Deposited Date"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               title="Paid Date"
+                               onchange="datetimeFieldBinder(dteDepoDateTime,'','customerpayment','depositeddatetime','oldcustomerpayment')">
+                    </div>
+                </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <!--Holder Name-->
+
+            <div class="form-group text-dark ">
+                <label for="txtHName" class="  "><b>Holder Name:
+                </b> <span style="color: red;">*</span></label>
+                <div class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           id="txtHName"
+                           placeholder="Enter Bank Acc Holder Name"
+                    >
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-end">
+                        <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                        <button type="button " class="btn button">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cheque Modal -->
+        <div class="modal fade position-absolute top-50 " id="ChequeView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Cheque Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+
+                                <div class="col-md-6">
+                                    <!--Cheque No-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="txtCNo" class="  "><b>Cheque No:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="txtCNo"
+                                                   placeholder="Enter Cheque No"
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <!--Cheque Date-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="dteChequeDate" class="  "><b>Cheque Date:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="date"
+                                                   class="form-control"
+                                                   id="dteChequeDate"
+
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-end">
+                        <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                        <button type="button " class="btn button">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MoneyTView Modal -->
+        <div class="modal fade position-absolute top-50 " id="MoneyTView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Cheque Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--Bank Name-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="txtBaname" class="  "><b>Bank Name:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="txtBaname"
+                                                   placeholder="Enter Bank Name"
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <!--Bank Branch Name-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="txtBBName" class="  "><b>Bank Branch Name:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="txtBBName"
+                                                   placeholder="Enter Bank Branch Name"
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <!--Holder Name-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="txtHoName" class="  "><b>Holder Name:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="txtHoName"
+                                                   placeholder="Enter Bank Acc Holder Name"
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <!--Bank Acc No-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="txtBaAccNo" class="  "><b>Bank Acc No:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="txtBaAccNo"
+                                                   placeholder="Enter Bank Acc No"
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!--Transefered Id-->
+                                <div class="col-md-3">
+                                    <div class="form-group text-dark ">
+                                        <label for="txtTId" class="  "> <b>Transefered Id:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="txtTId"
+                                                   placeholder="Enter Transfered Id"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <!--Depositted Date/Time-->
+
+                                    <div class="form-group text-dark ">
+                                        <label for="dteDeposDateTime" class="  "><b>Deposited
+                                            Date/Time:
+                                        </b> <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+
+                                            <input type="datetime-local"
+                                                   class="form-control"
+                                                   id="dteDeposDateTime"
+                                                   placeholder="Enter Deposited Date"
+                                                   data-toggle="tooltip"
+                                                   data-placement="bottom"
+                                                   title="Paid Date"
+                                                   onchange="datetimeFieldBinder(dteDeposDateTime,'','customerpayment','depositeddatetime','oldcustomerpayment')">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-end">
+                        <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                        <button type="button " class="btn button">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 </body>

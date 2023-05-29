@@ -11,6 +11,7 @@ function initialize() {
     btnUpdate.addEventListener("click", btnUpdateMC);
     txtSearchName.addEventListener("keyup", btnSearchMC);
     cmbReservation.addEventListener("change",getReservationAmount);
+    cmbPMethod.addEventListener("change",getcmbPMethod);
     privilages = httpRequest("../privilage?module=CUSTOMERPAYMENTS", "GET");
 
     //1.Make arrays as reservations,paymentcategories,paymentstatuses,paymentmethods and employees to get list for combop box
@@ -140,6 +141,27 @@ function getReservationAmount(){
 
 }
 
+function getcmbPMethod() {
+    if (JSON.parse(cmbPMethod.value).name == "Cheque") {
+        $('#ChequeView').modal('show');
+
+    }
+    if (JSON.parse(cmbPMethod.value).name == "Bank Deposit") {
+        $('#DepositeView').modal('show');
+
+    }
+    if (JSON.parse(cmbPMethod.value).name == "Money Transfer") {
+        $('#MoneyTView').modal('show');
+
+    }
+    // if (JSON.parse(cmbPMethod.value).name == "Cash") {
+    //     $('#MoneyTView').disabled=true;
+    //     $('#DepositeView').disabled=true;
+    //     $('#ChequeView').disabled=true;
+    // }
+
+}
+
 function loadForm() {
     //customerpayment front end object
     customerpayment = new Object();
@@ -173,10 +195,10 @@ function loadForm() {
     txtBalanceAmount.value = "";
     dteDepoDateTime.value = "";
 
-    txtRemark.value = "";
+    // txtRemark.value = "";
     txtTId.value = "";
     txtBname.value = "";
-    txtTACCname.value = "";
+    // txtTACCname.value = "";
 
     // set field to initial color
     setStyle(initial);
@@ -199,10 +221,10 @@ function setStyle(style) {
     dtePDateTime.style.border = style;
     dteDepoDateTime.style.border = style;
 
-    txtRemark.style.border = style;
+    //txtRemark.style.border = style;
     txtTId.style.border = style;
     txtBname.style.border = style;
-    txtTACCname.style.border = style;
+    // txtTACCname.style.border = style;
     cmbReservation.style.border = style;
     cmbPMethod.style.border = style;
 
@@ -315,7 +337,7 @@ function getErrors() {
 
 function btnAddMC() {
     if (getErrors() == "") {
-        if ( dteDepoDateTime.value == "" || dteDepoDateTime.value == "" || txtTId.value == "" || txtBname.value == "" || txtTACCname.value == "") {
+        if ( dteDepoDateTime.value == "" || dteDepoDateTime.value == "" || txtTId.value == "" || txtBname.value == "" ) {
             swal({
                 title: "Are you sure to continue...?",
                 text: "Form has some empty fields.....",
@@ -470,14 +492,14 @@ function filldata(cpay) {
     if (customerpayment.bankname == null)
         txtBname.style.border = initial;
 
-    if (customerpayment.remark == null)
-        txtRemark.style.border = initial;
+    // if (customerpayment.remark == null)
+    //     txtRemark.style.border = initial;
 
     if (customerpayment.transferid == null)
         txtTId.style.border = initial;
 
-    if (customerpayment.transferaccname == null)
-        txtTACCname.style.border = initial;
+    // if (customerpayment.transferaccname == null)
+    //     txtTACCname.style.border = initial;
 }
 
 //Update-Display updated values msg
