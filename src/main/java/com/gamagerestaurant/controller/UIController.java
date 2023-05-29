@@ -46,6 +46,20 @@ public class UIController {
         return modelAndView;
     }
 
+    @GetMapping(value = {"/employee1" })
+    public ModelAndView employee1ui() {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByUserName(auth.getName());
+        if(user!= null){
+            modelAndView.setViewName("employee1.html");
+        }
+        else
+            modelAndView.setViewName("error.html");
+
+        return modelAndView;
+    }
+
 
 
     @GetMapping(path = "/employee/{id}")
