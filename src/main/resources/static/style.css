@@ -322,3 +322,6 @@ h1.m-lg-4.main-title {
 .modal.fade.show .modal-dialog {
     transform: rotateY(0);
 }
+.small{
+    color: rgba(88, 17, 94, 0.98);
+}

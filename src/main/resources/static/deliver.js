@@ -22,7 +22,7 @@ function initialize() {
     txtSMOrderCount.addEventListener("keyup", txtSMOrderCountCH);
     txtMenuOrderCount.addEventListener("keyup", txtMenuOrderCountCH);
     cmbRegCustomer.addEventListener("change", cmbRegCustomerCH);
-
+    txtAdvanceAmount.addEventListener("keyup", txtAdvanceAmountCH);
 
     privilages = httpRequest("../privilage?module=DELIVERY", "GET");
 
@@ -130,6 +130,8 @@ function viewres(res, rowno) {
     tdtamount.innerHTML = reservation.totalamount;
     tddiscountratio.innerHTML = reservation.discountratio;
     tdlastprice.innerHTML = reservation.lastprice;
+    tdadvanceamount.innerHTML = customerpayment.discountratio;
+    tdbalanceamount.innerHTML = reservation.balanceamount;
 
 
     $('#ReservationViewModal').modal('show')
@@ -311,10 +313,17 @@ function cmbRegCustomerCH() {
         txtDmobile.style.border = valid;
         reservation.cmobile = txtDmobile.value;
 
+
+        console.log("Address",reservation.customer_id.address)
+        txtDAddress.value = reservation.customer_id.address;
+        txtDAddress.style.border = valid;
+        reservation.deliveryaddress = txtDAddress.value;
+
         //Delivery -Auto filtering Deliver Cp Mobile when selected the Customer
         txtDmobile.value = txtDmobile.value;
         txtDmobile.style.border = valid;
         reservationHasService.cmobile = txtDmobile.value;
+
 
     }
 }
@@ -345,6 +354,14 @@ function txtTAmountCH() {
     }
 }
 
+function txtAdvanceAmountCH(){
+   let balance= (parseFloat(txtAdvanceAmount.value)-parseFloat(txtLastPrice.value)).toFixed(2);
+
+    txtBAmount.value = balance;
+    txtBAmount.style.border = valid;
+    reservation.balanceamount = txtBAmount.value;
+}
+
 function loadForm() {
     reservation = new Object();
     oldreservation = null;
@@ -355,8 +372,8 @@ function loadForm() {
     reservation.reservationHasServiceList = new Array();
 
     //Auto fill combo box
-    fillCombo(cmbRegCustomer, "Select Customer", customers, "mobileno");
-    fillCombo(cmbPMethod, "Select Payment Method", cpmethods, "name");
+    fillCombo(cmbRegCustomer, "Select Registered Customer", customers, "mobileno");
+    fillCombo(cmbPMethod, "Select a Payment Method", cpmethods, "name");
 
 
 
@@ -1135,7 +1152,10 @@ function savedata() {
             "\n Total Amount  : " + reservation.totalamount +
             "\n Discount ratio : " + reservation.discountratio +
             "\n Last price : " + reservation.lastprice +
-            "\n Service Charge: " + reservation.servicecharge,
+            "\n Service Charge: " + reservation.servicecharge+
+            "\n Current Amount: " + customerpayment.currentamount+
+        "\n Balance Amount: " + customerpayment.balanceamount,
+
 
         icon: "warning",
         buttons: true,

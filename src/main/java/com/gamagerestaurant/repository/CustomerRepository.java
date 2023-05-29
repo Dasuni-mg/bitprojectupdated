@@ -21,7 +21,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value = "SELECT concat('C',lpad(substring(max(c.regno),2)+1,7,'0')) FROM gamage_restaurant.customer as c;",nativeQuery = true)
     String nextRegNo();
 
-    @Query( value = "select new Customer (c.id,c.fname,c.lname,c.mobileno) from Customer c")
+    @Query( value = "select new Customer (c.id,c.fname,c.lname,c.mobileno,c.address) from Customer c")
     List<Customer> list();
 
 }

@@ -146,7 +146,7 @@
                                                 <!-- Delivery No-->
                                                 <div class="col-md-4">
                                                     <div class="form-group text-dark ">
-                                                        <label for="txtReservationNo" class=" "><b>Delivery No:
+                                                        <label for="txtReservationNo" ><b>Delivery No:
                                                             <span style="color: red;">*</span></b> </label>
                                                         <div class="input-group">
                                                             <input type="text"
@@ -154,6 +154,7 @@
                                                                    id="txtReservationNo"
                                                                    required>
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Delivery No auto loaded here.</small>
                                                     </div>
                                                 </div>
 
@@ -169,10 +170,12 @@
                                                                     required
                                                                     data-toggle="tooltip"
                                                                     data-placement="bottom"
-                                                                    title="Registerd Customer TP"
+                                                                    title="Registered Customers Mobile Numbers"
                                                                     onchange="comboBoxBinder(cmbRegCustomer,'','reservation','customer_id','oldreservation')">
                                                             </select>
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Select the Registered customer.</small>
+
                                                     </div>
                                                 </div>
                                                 <!-- Customer name-->
@@ -182,23 +185,22 @@
                                                         </b> <span style="color: red;">*</span></label>
                                                         <div class="input-group">
 
-
-
                                                             <input type="text"
                                                                    class="form-control"
                                                                    id="txtCName"
                                                                    placeholder="Enter Customer Name"
                                                                    required data-toggle="tooltip"
                                                                    data-placement="bottom"
-                                                                   title="Eg:Kamal"
+                                                                   title="Start from Uppercase letter  |  Eg : Kamal"
                                                                    onkeyup="textFieldBinder(txtCName,'','reservation','cname','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Modify Reg cus. name to Delivery cus. name</small>
+
                                                     </div>
                                                 </div>
                                             </div>
 
                                                 <div class="row m-2 p-3"   >
-
 
                                                 <!-- Delivery Address-->
                                                 <div class="col-md-4 ">
@@ -206,38 +208,35 @@
                                                         <label for="txtDAddress" class="  "><b>Delivery Address:
                                                         </b> <span style="color: red;">*</span></label>
                                                         <div class="input-group">
-
-
-
                                                             <input type="text"
                                                                    class="form-control"
                                                                    id="txtDAddress"
                                                                    placeholder="Enter Delivery Address"
                                                                    required data-toggle="tooltip"
                                                                    data-placement="bottom"
-                                                                   title=""
+                                                                   title="Any character allow"
                                                                    onkeyup="textFieldBinder(txtDAddress,'','reservation','deliveryaddress','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Modify Reg Customer Address to Delivery address.</small>
+
                                                     </div>
                                                 </div>
                                                     <!-- Deliver mobile-->
                                                     <div class="col-md-4 ">
                                                         <div class="form-group text-dark ">
                                                             <label for="txtDmobile" class="  "><b>Deliver mobile:
-                                                            </b> <span style="color: red;">*</span></label>
+                                                            </b> </label>
                                                             <div class="input-group">
-
-
-
                                                                 <input type="text"
                                                                        class="form-control"
                                                                        id="txtDmobile"
                                                                        placeholder="Enter Mobile No"
                                                                        required data-toggle="tooltip"
                                                                        data-placement="bottom"
-                                                                       title="Eg:0765354687"
+                                                                       title="Start from 0,Allows only 10 Numbers  |  Eg : 0765354687"
                                                                        onkeyup="textFieldBinder(txtDmobile,'^0\\d{9}$','reservation','cmobile','oldreservation')">
                                                             </div>
+                                                            <small class="form-text  small autoloaded">If need Modify Delivery Telephone no.</small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -590,8 +589,6 @@
                                                         <label for="txtSCharge"><b>Service Charge:</b>
                                                             <span style="color: red;">*</span> </label>
                                                         <div class="input-group">
-
-
                                                             <input type="text"
                                                                    class="form-control"
                                                                    id="txtSCharge"
@@ -602,6 +599,8 @@
                                                                    title=""
                                                                    onkeyup="textFieldBinder(txtSCharge,'','reservation','servicecharge','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Service charge Auto loaded Here</small>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -609,8 +608,6 @@
                                                         <label for="txtTAmount"><b>Total Amount:</b>
                                                             <span style="color: red;">*</span> </label>
                                                         <div class="input-group">
-
-
                                                             <input type="text"
                                                                    class="form-control"
                                                                    id="txtTAmount"
@@ -621,6 +618,8 @@
                                                                    title=""
                                                                    onkeyup="textFieldBinder(txtTAmount,'^[0-9]{2,5}[.][0-9]{2}$','reservation','totalamount','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Total amount Auto loaded Here</small>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -630,19 +629,18 @@
 
                                                         </label>
                                                         <div class="input-group">
-
-                                                                    
-
-                                                            <input type="text"
+  <input type="text"
                                                                    class="form-control"
                                                                    id="txtDiscountRatio"
                                                                    placeholder="Enter the Discount Ratio"
                                                                    required
                                                                    data-toggle="tooltip"
                                                                    data-placement="bottom"
-                                                                   title=""
+                                                                   title=">= 5000 | 0.2 , >= 7500 | 0.3 , >= 10000 | 0.5 , =>15000 | 1"
                                                                    onkeyup="textFieldBinder(txtDiscountRatio,'^[0-9]{1,2}$','reservation','discountratio','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Discount auto loaded according to the T.Amount</small>
+
                                                     </div>
                                                 </div>
 
@@ -670,6 +668,8 @@
                                                                    onkeyup="textFieldBinder(txtLastPrice,'^[0-9]{2,5}[.][0-9]{2}$','reservation','lastprice','oldreservation')"/>
 
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Last Price auto loaded Here</small>
+
                                                     </div>
                                                 </div>
                                                 <!--payment method-->
@@ -682,6 +682,7 @@
                                                                 onchange="comboBoxBinder(cmbPMethod,'','customerpayment','cpmethod_id','oldcustomerpayment')">
                                                         </select>
                                                     </div>
+                                                    <small class="form-text  small autoloaded">Select Payment Method</small>
                                                 </div>
                                                 <div class="col-md-3">
 
@@ -690,19 +691,17 @@
                                                         <label class="" for="txtAdvanceAmount"><b>Advance Amount :</b>
                                                             <span style="color: red;">*</span> </label>
                                                         <div class="input-group">
-
-
-                                                            <input type="text"
+ <input type="text"
                                                                    class="form-control"
                                                                    id="txtAdvanceAmount"
                                                                    placeholder="Enter the Advance Amount"
-
                                                                    data-toggle="tooltip"
                                                                    data-placement="bottom"
-                                                                   title=""
+                                                                   title="This should be decimal value | Ex : 15000.00"
                                                                    onkeyup="textFieldBinder(txtAdvanceAmount,'^[0-9]{2,5}[.][0-9]{2}$','customerpayment','currentamount','oldcustomerpayment')"/>
 
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Enter Advance Amount</small>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -713,8 +712,6 @@
                                                         <span style="color: red;">*</span> </label>
                                                         <div class="input-group">
                                                             <input type="text"
-
-
                                                                    class="form-control"
                                                                    id="txtBAmount"
                                                                    placeholder="Enter the Balance amount"
@@ -725,6 +722,7 @@
                                                                    onkeyup="textFieldBinder(txtBAmount,'^[0-9]{2,5}[.][0-9]{2}$','reservation','balanceamount','oldreservation')"/>
 
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Balance Amount Auto Loaded Here</small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -763,12 +761,19 @@
                 </div>
             </div>
             <div class="col-md-3 ">
+                <div class="card mt-4">
+                    <div class="card-body d-flex justify-content-around align-items-center">
 
-                <div>
-                    <button type="button" class="btn button btn-border-dark btn-lg m-3 btn-block" data-toggle="modal"
-                            data-target="#exampleModal"><i class="fas fa-plus mx-3"></i>New customer
-                    </button>
+
+                            <button type="button" class="btn button btn-border-dark btn-lg m-3 btn-block" data-toggle="modal"
+                                    data-target="#exampleModal"><i class="fas fa-plus mx-3"></i>New customer
+                            </button>
+                            <a href="http://localhost:8080/cpayment" class="btn button btn-border-dark btn-lg m-3 btn-block"><i class="fas fa-arrow-alt-circle-right mx-3"></i>Payment
+                            </a>
+
+                    </div>
                 </div>
+
                 <div class="datetime">
                     <div class="time"></div>
                     <div class="date"></div>
@@ -833,10 +838,7 @@
                         dateElement.textContent = formatDate(now);
                     }, 200);
                 </script>
-                <div>
-                    <a href="http://localhost:8080/cpayment" class="btn button btn-border-dark btn-lg m-3 btn-block">Payment <i class="fas fa-arrow-alt-circle-right mx-3"></i>
-                    </a>
-                </div>
+
                 <div class="card mt-4">
                     <div class="card-body">
                         <h5 class="card-title">Delivery History</h5>
@@ -1095,7 +1097,7 @@
         </div>
 
         <!--Table- Modal -->
-        <div class="modal fade" id="tableview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade " id="tableview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
@@ -1175,11 +1177,14 @@
                                                                 <th>Last price:</th>
                                                                 <td id="tdlastprice"></td>
                                                             </tr>
-                                                            <!--                                                    <tr>-->
-                                                            <!--                                                        <th>Added Employee :</th>-->
-                                                            <!--                                                        <td id="tdAddedEmployee"></td>-->
-                                                            <!--                                                    </tr>-->
-
+                                                            <tr>
+                                                                <th>Advance Amount :</th>
+                                                                <td id="tdadvanceamount"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Balance Amount:</th>
+                                                                <td id="tdbalanceamount"></td>
+                                                            </tr>
 
                                                             </tbody>
                                                         </table>
@@ -1236,7 +1241,18 @@
                                                 search: true,
                                                 datatype: 'text',
                                                 property: 'lastprice'
-                                            }];
+                                            }
+                                                , {
+                                                    name: 'Advance Amount',
+                                                    search: true,
+                                                    datatype: 'text',
+                                                    property: 'currentamount'
+                                                } , {
+                                                    name: 'Balance Amount',
+                                                    search: true,
+                                                    datatype: 'text',
+                                                    property: 'balanceamount'
+                                                }];
                                             //table function
                                             table("tableParent", "tblDelivery", metadata, true);
                                         </script>

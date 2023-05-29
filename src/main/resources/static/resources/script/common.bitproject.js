@@ -926,7 +926,7 @@ function fileChooser(parent,id,lblText,labelWidth,extenstions,maxsize,required,o
     label.innerHTML = lblText + " (200*100)";
     label.for = id;
     label.classList.add('control-label');
-    label.classList.add('font-weight-bold');
+     label.classList.add('font-weight-bold');
     // label.classList.add('col-md-'+labelWidth);
     var fieldArea = createElement('div');
     fieldArea.classList.add('row');

@@ -139,6 +139,11 @@ function getReservationAmount(){
     customerpayment.reservationamount = reservationAmount;
     txtReservationAmount.style.border = valid;
 
+
+    let currentAmount =JSON.parse(cmbReservation.value).currentamount;
+    txtCurrentAmount.value=parseFloat(currentAmount).toFixed(2);
+    customerpayment.currentamount = currentAmount;
+    txtCurrentAmount.style.border = valid;
 }
 
 function getcmbPMethod() {

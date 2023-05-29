@@ -136,10 +136,10 @@
                                         <div class="col-md-12 pb-3">
                                             <div class="row m-2 p-3"   >
 
-                                                <!-- Delivery No-->
+                                                <!-- Dine-in No-->
                                                 <div class="col-md-3">
                                                     <div class="form-group text-dark ">
-                                                        <label for="txtReservationNo" class=" "><b>Delivery No:
+                                                        <label for="txtReservationNo" class=" "><b>Dine-in No:
                                                             <span style="color: red;">*</span></b> </label>
                                                         <div class="input-group">
                                                             <input type="text"
@@ -147,6 +147,7 @@
                                                                    id="txtReservationNo"
                                                                    required>
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Select the Registered customer.</small>
                                                     </div>
                                                 </div>
 
@@ -156,7 +157,6 @@
                                                         <label for="cmbRegCustomer" class=""><b>Registered Cus_TP :</b>
                                                         </label>
                                                         <div class="input-group">
-
                                                             <select id="cmbRegCustomer"
                                                                     class="js-example-basic-single form-control"
                                                                     required
@@ -166,6 +166,8 @@
                                                                     onchange="comboBoxBinder(cmbRegCustomer,'','reservation','customer_id','oldreservation')">
                                                             </select>
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Modify Reg cus. name to Delivery cus. name</small>
+
                                                     </div>
                                                 </div>
 
@@ -175,9 +177,6 @@
                                                         <label for="txtCName" class="  "> <b>Customer Name:
                                                         </b> <span style="color: red;">*</span></label>
                                                         <div class="input-group">
-
-
-
                                                             <input type="text"
                                                                    class="form-control"
                                                                    id="txtCName"
@@ -187,6 +186,8 @@
                                                                    title="Eg:Kamal"
                                                                    onkeyup="textFieldBinder(txtCName,'','reservation','cname','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Dine-in number auto loaded</small>
+
                                                     </div>
                                                 </div>
 
@@ -201,12 +202,13 @@
                                                             <input type="date"
                                                                    class="form-control"
                                                                    id="txtRDate"
-
                                                                    required data-toggle="tooltip"
                                                                    data-placement="bottom"
                                                                    title="Eg:2023-09-10"
                                                                    onchange="textFieldBinder(txtRDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','reservation','reserveddate','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Select a date.</small>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -557,9 +559,7 @@
                                                         <label for="txtSCharge"><b>Service Charge:</b>
                                                             <span style="color: red;">*</span> </label>
                                                         <div class="input-group">
-
-
-                                                            <input type="text"
+   <input type="text"
                                                                    class="form-control"
                                                                    id="txtSCharge"
                                                                    placeholder="Enter the Service"
@@ -569,6 +569,8 @@
                                                                    title=""
                                                                    onkeyup="textFieldBinder(txtSCharge,'','reservation','servicecharge','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Service charge Auto loaded Here</small>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -588,6 +590,8 @@
                                                                    title=""
                                                                    onkeyup="textFieldBinder(txtTAmount,'^[0-9]{2,5}[.][0-9]{2}$','reservation','totalamount','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Total amount Auto loaded Here</small>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -597,9 +601,6 @@
 
                                                         </label>
                                                         <div class="input-group">
-
-
-
                                                             <input type="text"
                                                                    class="form-control"
                                                                    id="txtDiscountRatio"
@@ -610,6 +611,8 @@
                                                                    title=""
                                                                    onkeyup="textFieldBinder(txtDiscountRatio,'^[0-9]{1,2}$','reservation','discountratio','oldreservation')">
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Discount auto loaded according to the T.Amount</small>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -632,6 +635,8 @@
                                                                    onkeyup="textFieldBinder(txtLastPrice,'^[0-9]{2,5}[.][0-9]{2}$','reservation','lastprice','oldreservation')"/>
 
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Last Price auto loaded Here</small>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -646,6 +651,8 @@
                                                                 onchange="comboBoxBinder(cmbPMethod,'','customerpayment','cpmethod_id','oldcustomerpayment')">
                                                         </select>
                                                     </div>
+                                                    <small class="form-text  small autoloaded">Select Payment Method</small>
+
                                                 </div>
                                                 <div class="col-md-4">
 
@@ -667,6 +674,8 @@
                                                                    onkeyup="textFieldBinder(txtPAmount,'^[0-9]{2,5}$','customerpayment','paidamount','oldcustomerpayment')"/>
 
                                                         </div>
+                                                        <small class="form-text  small autoloaded">Enter Paid Amount</small>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -690,6 +699,8 @@
 
                                                         </div>
                                                     </div>
+                                                    <small class="form-text  small autoloaded">Balance Amount Auto Loaded</small>
+
                                                 </div>
                                             </div>
 
