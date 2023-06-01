@@ -6,11 +6,9 @@ function initialize() {
     $('[data-toggle="tooltip"]').tooltip()
 
     //add/clear/update button event handlers
-    btnAdd.addEventListener("click", btnAddMC);
-    btnClear.addEventListener("click", btnClearMC);
-    btnUpdate.addEventListener("click", btnUpdateMC);
-    txtSearchName.addEventListener("keyup", btnSearchMC);
+    btnTAdd1.addEventListener("click", btnAddMCT);
     cmbReservation.addEventListener("change", cmbReservationCH);
+    txtSearchName.addEventListener("keyup", btnSearchMC);
 
 
     privilages = httpRequest("../privilage?module=TABLEALLOWCATION", "GET");
@@ -27,109 +25,17 @@ function initialize() {
     //2.make controller and repository
 
     //colours
-    valid = "3px solid #00f000";
+    valid = "3px solid #078D27B2";
     invalid = "3px solid red";
     initial = "3px solid #d6d6c2";
     updated = "3px solid #ff9900";
-    active = "rgba(246,215,52,0.7)";
-
-    loadView();
-    //calling load view function for load view side
-    loadForm();
-    //calling load view function for load view side
-    changeTab('form');
-    //calling form tab
-
-}
-
-function loadView() {
-
-    //Search Area
-    txtSearchName.value = "";
-    txtSearchName.style.background = "";
-
-    //Table Area
-    activerowno = "";
-    activepage = 1;
-    var query = "&searchtext=";
-    loadTable(1, cmbPageSize.value, query);
-}
-
-//for fill data into table
-function loadTable(page, size, query) {
-    page = page - 1;            //initially 0 page(1-1=0)
-    tableallocations = new Array();    //tableallocations array
-
-    //Request to get quotation  list from URL
-    var data = httpRequest("/tableallocation/findAll?page=" + page + "&size=" + size + query, "GET");
-
-    if (data.content != undefined) tableallocations = data.content;
-    createPagination('pagination', data.totalPages, data.number + 1, paginate);
-
-    //fill data into table using quotations array
-    //fill form-update, btnDeleteMc-Clear , Viewqreq-print
-    fillTable('tblTableallocation', tableallocations, fillForm, btnDeleteMC, viewtab);
-    clearSelection(tblTableallocation);
-
-    if (activerowno != "") selectRow(tblTableallocation, activerowno, active);
-
-}
-
-function paginate(page) {
-    var paginate;
-    if (oldtableallocation = null) {
-        paginate = true;
-    } else {
-        if (getErrors() == '' && getUpdates() == '') {
-            paginate = true;
-        } else {
-            paginate = window.confirm("Form has Some Errors or Update Values. " +
-                "Are you sure to discard that changes ?");
-        }
-    }
-    if (paginate) {
-        activepage = page;
-        activerowno = ""
-        loadForm();
-        loadSearchedTable();
-    }
-
-}
-
-//print row -get data into the print table
-function viewtab(tab, rowno) {
-
-    tableallocation = JSON.parse(JSON.stringify(tab));
+    active = "rgba(250,210,11,0.7)";
 
 
-    tdTAcode.innerHTML = tableallocation.tableallocationcode;
-    tdRDate.innerHTML = tableallocation.reserveddate;
-    tdRTime.innerHTML = tableallocation.reservetime;
-    tddteAddedDate.innerHTML = tableallocation.addeddate;
 
-    tdTStatus.innerHTML = tableallocation.tablestatus_id.name;
-    tdReservation.innerHTML = tableallocation.reservation_id.reservationno;
+    loadFormT();
+  
 
-    $('#TblAllocationModal').modal('show')
-
-}
-
-function btnPrintRowMC() {
-
-    var format = printformtable.outerHTML;
-    var newwindow = window.open();
-
-    newwindow.document.write("<html>" +
-        "<head><style type='text/css'>.google-visualization-table-th {text-align: left;}</style></head>" +
-        "<link rel='stylesheet' href='resources/bootstrap/css/bootstrap.min.css'/>" +
-        "<body><div style='margin-top: 150px'><h1>Table allocation :</h1></div>" +
-        "<div>" + format + "</div>" +
-        "<script>printformtable.removeAttribute('style')</script>" +
-        "</body></html>");
-    setTimeout(function () {
-        newwindow.print();
-        newwindow.close();
-    }, 1000);
 }
 
 function cmbReservationCH(){
@@ -142,7 +48,7 @@ function cmbReservationCH(){
 
 }
 
-function loadForm() {
+function loadFormT() {
     tableallocation = new Object();
     oldtableallocation = null;
 
@@ -161,16 +67,6 @@ function loadForm() {
 
 
 
-    var today = new Date();
-    var month = today.getMonth() + 1;
-    if (month < 10) month = "0" + month;
-    var date = today.getDate();
-    if (date < 10) date = "0" + date;
-
-    dteAddedDate.value = today.getFullYear() + "-" + month + "-" + date;
-    tableallocation.addeddate = dteAddedDate.value;
-    dteAddedDate.disabled = true;
-
 
     nextta = httpRequest("../tableallocation/nextta", "GET");
     txtTAcode.value = nextta.tableallocationcode;
@@ -181,23 +77,24 @@ function loadForm() {
     //text field empty
     txtRDate.value = "";
     txtRTime.value = "";
+    txtGCount.value="";
 
     cmbReservation.value = "";
 
 
-    setStyle(initial);
+    setStyleT(initial);
 
     cmbTStatus.style.border = valid;
-    dteAddedDate.style.border = valid;
+
     txtTAcode.style.border = valid;
 
 
-    disableButtons(false, true, true);
+    disableButtonsT(false, true, true);
 
     refreshInnerForm();
 }
 
-function refreshInnerForm() {
+function refreshInnerFormT() {
 
     tableallocationHastabledetail = new Object();
     oldtableallocationHastabledetail = null;
@@ -217,7 +114,7 @@ function refreshInnerForm() {
 
 }
 
-function btnInnerAddMC() {
+function btnInnerAddMCT() {
     var itmext = false;
 
     for (var index in tableallocation.tableallocationHasTableddetailList) {
@@ -236,7 +133,7 @@ function btnInnerAddMC() {
         });
     } else {
         tableallocation.tableallocationHasTableddetailList.push(tableallocationHastabledetail);
-        refreshInnerForm();
+        refreshInnerFormT();
     }
 
 
@@ -256,24 +153,25 @@ function innerDelete(innerob, innerrow) {
     }).then((willDelete) => {
         if (willDelete) {
             tableallocation.tableallocationHasTableddetailList.splice(innerrow, 1);
-            refreshInnerForm();
+            refreshInnerFormT();
         }
     });
 }
 
-function setStyle(style) {
+function setStyleT(style) {
 
 
     txtTAcode.style.border=style;
     txtRDate.style.border=style;
     txtRTime.style.border=style;
-    dteAddedDate.style.border=style;
+
+    txtGCount.style.border=style;
 
     cmbTStatus.style.border=style;
     cmbReservation.style.border=style;
 }
 
-function disableButtons(add, upd, del) {
+function disableButtonsT(add, upd, del) {
 
     if (add || !privilages.add) {
         btnAdd.setAttribute("disabled", "disabled");
@@ -318,7 +216,7 @@ function disableButtons(add, upd, del) {
     }
 }
 
-function getErrors() {
+function getErrorsT() {
 
     var errors = "";
     addvalue = "";
@@ -343,6 +241,11 @@ function getErrors() {
         cmbReservation.style.border = invalid;
     } else addvalue = 1;
 
+    if (tableallocation.guestcount == null) {
+        errors = errors + "\n" + "RGuest Count Not Entered";
+        txtGCount.style.border = invalid;
+    } else addvalue = 1;
+
 
     // msg for fill data in innertable
     if (tableallocation.tableallocationHasTableddetailList.length == 0) {
@@ -356,13 +259,13 @@ function getErrors() {
 
 }
 
-function btnAddMC() {
-    if (getErrors() == "") {
-            savedata();
+function btnAddMCT() {
+    if (getErrorsT() == "") {
+            savedataT();
     } else {
         swal({
             title: "You have following errors",
-            text: "\n" + getErrors(),
+            text: "\n" + getErrorsT(),
             icon: "error",
             button: true,
         });
@@ -370,7 +273,7 @@ function btnAddMC() {
     }
 }
 
-function savedata() {
+function savedataT() {
 
     swal({
         title: "Are you sure to add following Sub menu...?",
@@ -379,6 +282,7 @@ function savedata() {
             "\nReservation: " + JSON.parse(cmbReservation.value).reservationno +
             "\nReserved Date: " + tableallocation.reserveddate +
             "\nReserved Time : " + tableallocation.reservetime+
+            "\nGuest Count: " + tableallocation.guestcount +
             "\nAdded date: " + tableallocation.addeddate,
 
         icon: "warning",
@@ -398,7 +302,7 @@ function savedata() {
                 });
                 activepage = 1;
                 loadSearchedTable();
-                loadForm();
+                loadFormT();
                 changeTab('table');
             } else swal({
                 title: 'Save not Success... , You have following errors', icon: "error",
@@ -412,10 +316,10 @@ function savedata() {
 
 function btnClearMC() {
     //Get Cofirmation from the User window.confirm();
-    checkerr = getErrors();
+    checkerr = getErrorsT();
 
     if (oldtableallocation == null && addvalue == "") {
-        loadForm();
+        loadFormT();
     } else {
         swal({
             title: "Form has some values, updates values... Are you sure to discard the form ?",
@@ -423,248 +327,10 @@ function btnClearMC() {
             icon: "warning", buttons: true, dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                loadForm();
+                loadFormT();
             }
 
         });
     }
-
-}
-
-function fillForm(tab, rowno) {
-    activerowno = rowno;
-
-    if (oldtableallocation == null) {
-        filldata(tab);
-    } else {
-        swal({
-            title: "Form has some values, updates values... Are you sure to discard the form ?",
-            text: "\n",
-            icon: "warning", buttons: true, dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                filldata(tab);
-            }
-
-        });
-    }
-
-}
-
-function filldata(tab) {
-    clearSelection(tblTableallocation);
-    selectRow(tblTableallocation, activerowno, active);
-
-    tableallocation = JSON.parse(JSON.stringify(tab));
-    oldtableallocation = JSON.parse(JSON.stringify(tab));
-
-
-    txtTAcode.value=tableallocation.tableallocationcode;
-    txtRDate.value=tableallocation.reserveddate;
-    txtRDate.disabled=true;
-
-    txtRTime.value=tableallocation.reservetime;
-    dteAddedDate.value = tableallocation.addeddate;
-
-    fillCombo(cmbReservation, "Select a reservation", reservations, "reservationno", tableallocation.reservation_id.reservationno);
-    cmbReservation.disabled=true;
-
-    //fill and auto select autobind
-      
-    fillCombo(cmbTStatus, "", tablestatuses, "name", "");
-    cmbTStatus.disabled=false;
-
-    disableButtons(true, false, false);
-    setStyle(valid);
-    changeTab('form');
-
-
-}
-
-//Update-Display updated values msg
-function getUpdates() {
-
-    var updates = "";
-
-    if (tableallocation != null && oldtableallocation != null) {
-
-        if (tableallocation.tableallocationcode != oldtableallocation.tableallocationcode)
-            updates = updates + "\ntableallocation Code is Changed";
-
-        if (tableallocation.reserveddate != oldtableallocation.reserveddate)
-            updates = updates + "\nReserveddate is Changed";
-
-        if (tableallocation.reservetime != oldtableallocation.reservetime)
-            updates = updates + "\nReserved date is Changed";
-
-        if (tableallocation.addeddate != oldtableallocation.addeddate)
-            updates = updates + "\nAddeddate is Changed";
-
-               if (tableallocation.tableallocationstatus_id.name != oldtableallocation.tableallocationstatus_id.name)
-            updates = updates + "\n Table allocation status is Changed";
-
-        if (tableallocation.reservation_id.cname != oldtableallocation.reservation_id.cname)
-            updates = updates + "\nReservation is Changed";
-    }
-
-    return updates;
-
-}
-
-function btnUpdateMC() {
-    var errors = getErrors();
-    if (errors == "") {
-        var updates = getUpdates();
-        if (updates == "")
-            swal({
-                title: 'Nothing Updated..!', icon: "warning",
-                text: '\n',
-                button: false,
-                timer: 1200
-            });
-        else {
-            swal({
-                title: "Are you sure to update following Table details...?",
-                text: "\n" + getUpdates(),
-                icon: "warning", buttons: true, dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        var response = httpRequest("/tableallocation", "PUT", tableallocation);
-                        if (response == "0") {
-                            swal({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Your work has been Done \n Update SuccessFully..!',
-                                text: '\n',
-                                button: false,
-                                timer: 1200
-                            });
-                            loadSearchedTable();
-                            loadForm();
-                            changeTab('table');
-
-                        } else window.alert("Failed to Update as \n\n" + response);
-                    }
-                });
-        }
-    } else
-        swal({
-            title: 'You have following errors in your form', icon: "error",
-            text: '\n ' + getErrors(),
-            button: true
-        });
-
-}
-
-function btnDeleteMC(tab) {
-    tableallocation = JSON.parse(JSON.stringify(tab));
-
-    swal({
-        title: "Are you sure to delete following submenu...?",
-        text:
-            "\nTable Allocation code : " + tableallocation.tableallocationcode,
-
-        icon: "warning", buttons: true, dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            var responce = httpRequest("/tableallocation", "DELETE", tableallocation);
-            if (responce == 0) {
-                swal({
-                    title: "Deleted Successfully....!",
-                    text: "\n\n  Status change to delete",
-                    icon: "success", button: false, timer: 1200,
-                });
-                loadSearchedTable();
-                loadForm();
-            } else {
-                swal({
-                    title: "You have following erros....!",
-                    text: "\n\n" + responce,
-                    icon: "error", button: true,
-                });
-            }
-        }
-    });
-
-}
-
-function loadSearchedTable() {
-
-    var searchtext = txtSearchName.value;
-
-    var query = "&searchtext=";
-
-    if (searchtext != "")
-        query = "&searchtext=" + searchtext;
-    //window.alert(query);
-    loadTable(activepage, cmbPageSize.value, query);
-    disableButtons(false, true, true);
-}
-
-function btnSearchMC() {
-    activepage = 1;
-    loadSearchedTable();
-}
-
-function btnSearchClearMC() {
-    loadView();
-}
-
-function btnPrintTableMC(tab) {
-
-    var newwindow = window.open();
-    formattab = tblSubmenu.outerHTML;
-    //write print table in the new tab
-    newwindow.document.write("" +
-        "<html>" +
-        "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
-        "<link rel='stylesheet' href='resources/bootstrap/css/bootstrap.min.css'/></head>" +
-        "<body><div style='margin-top: 150px; '> <h1>Submenu Details : </h1></div>" +
-        "<div>" + formattab + "</div>" +
-        "</body>" +
-        "</html>");
-    setTimeout(function () {
-        newwindow.print();
-        newwindow.close();
-    }, 1500);
-}
-
-function sortTable(cind) {
-    cindex = cind;
-
-    var cprop = tblEmployee.firstChild.firstChild.children[cindex].getAttribute('property');
-
-    if (cprop.indexOf('.') == -1) {
-        employees.sort(
-            function (a, b) {
-                if (a[cprop] < b[cprop]) {
-                    return -1;
-                } else if (a[cprop] > b[cprop]) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        );
-    } else {
-        employees.sort(
-            function (a, b) {
-                if (a[cprop.substring(0, cprop.indexOf('.'))][cprop.substr(cprop.indexOf('.') + 1)] < b[cprop.substring(0, cprop.indexOf('.'))][cprop.substr(cprop.indexOf('.') + 1)]) {
-                    return -1;
-                } else if (a[cprop.substring(0, cprop.indexOf('.'))][cprop.substr(cprop.indexOf('.') + 1)] > b[cprop.substring(0, cprop.indexOf('.'))][cprop.substr(cprop.indexOf('.') + 1)]) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        );
-    }
-    fillTable('tblEmployee', employees, fillForm, btnDeleteMC, viewitem);
-    clearSelection(tblEmployee);
-    loadForm();
-
-    if (activerowno != "") selectRow(tblEmployee, activerowno, active);
-
 
 }

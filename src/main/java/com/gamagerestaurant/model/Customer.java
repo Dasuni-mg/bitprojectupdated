@@ -63,13 +63,9 @@ public class Customer {
     private LocalDate addeddate;
 
 
-
-
     @JoinColumn(name="customerstatus_id",referencedColumnName = "id")
     @ManyToOne(optional = false,fetch=FetchType.EAGER)
     private Customerstatus customerstatus_id;
-
-
 
     @JoinColumn(name="employee_id",referencedColumnName = "id")
     @ManyToOne(optional = false,fetch=FetchType.EAGER)

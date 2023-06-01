@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
@@ -95,6 +96,7 @@ public class TableallocationController {
         //check user null
         if (priv != null & priv.get("add")) {
             try {
+                tableallocation.setAddeddate(LocalDate.now());
                 System.out.println(tableallocation);
                 for (TableallocationHasTableddetail thd : tableallocation.getTableallocationHasTableddetailList()) {
                     thd.setTableallocation_id(tableallocation);

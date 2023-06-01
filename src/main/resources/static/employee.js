@@ -21,7 +21,6 @@
             genders = httpRequest("../gender/list","GET");
             designations = httpRequest("../designation/list","GET");
             civilstatuses = httpRequest("../civilstatus/list","GET");
-            employeestatuses = httpRequest("../employeestatus/list","GET");
 
             valid = "2px solid green";
             invalid = "2px solid red";
@@ -33,7 +32,7 @@
             loadForm();
 
 
-            changeTab('form');
+            // changeTab('form');
         }
 
         function loadView() {
@@ -214,22 +213,8 @@
              fillCombo(cmbGender,"Select Gender",genders,"name","");
              fillCombo(cmbDesignation,"Select Designation",designations,"name","");
              fillCombo(cmbCivilstatus,"Select Civil Status",civilstatuses,"name","");
-             fillCombo(avnvemp,"Select Status",employeestatuses,"name","");
-
-             fillCombo(cmbEmployeestatus,"",employeestatuses,"name","Working");
-            employee.employeestatusId=JSON.parse(cmbEmployeestatus.value);
-            cmbEmployeestatus.disabled = true;
 
 
-             var today = new Date();
-             var month = today.getMonth()+1;
-             if(month<10) month = "0"+month;
-             var date = today.getDate();
-             if(date<10) date = "0"+date;
-
-             dteDOAssignment.value=today.getFullYear()+"-"+month+"-"+date;
-             employee.doassignment=dteDOAssignment.value;
-            dteDOAssignment.disabled = true;
 
             // Get Next Number Form Data Base
             var nextNumber = httpRequest("/employee/nextNumber", "GET");
@@ -245,12 +230,11 @@
              txtMobile.value = "";
              txtLand.value = "";
 
-             txtDescription.value = "";
              removeFile('flePhoto');
 
              setStyle(initial);
-             cmbEmployeestatus.style.border=valid;
-             dteDOAssignment.style.border=valid;
+
+
             txtNumber.style.border=valid;
 
              disableButtons(false, true, true);
@@ -269,9 +253,7 @@
             txtMobile.style.border = style;
             txtLand.style.border = style;
             cmbDesignation.style.border = style;
-            dteDOAssignment.style.border = style;
-            txtDescription.style.border = style;
-            cmbEmployeestatus.style.border = style;
+
 
         }
 
@@ -473,7 +455,7 @@
 
         function btnAddMC(){
             if(getErrors()==""){
-                if(txtLand.value=="" || txtDescription.value ==""){
+                if(txtLand.value=="" ){
                     swal({
                         title: "Are you sure to continue...?",
                         text: "Form has some empty fields.....",
@@ -513,12 +495,8 @@
                     "\nBirth Date : " + employee.dobirth +
                     "\nPhoto : " + employee.photoname +
                     "\nAddress : " + employee.address +
-                    "\nMobile : " + employee.mobile +
-                    //"\nLand : " + employee.land +
-                //    "\nDesignation : " + employee.designationId.name +
-                     "\nAssignment Date : " + employee.doassignment +
-                    "\nDescription : " + employee.description +
-                    "\nEmployee Status : " + employee.employeestatusId.name,
+                    "\nMobile : " + employee.mobile ,
+
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -538,7 +516,7 @@
                         activerowno = 1;
                         loadSearchedTable();
                         loadForm();
-                        changeTab('table');
+                        //changeTab('table');
                     }
                     else swal({
                         title: 'Save not Success... , You have following errors', icon: "error",
@@ -609,19 +587,17 @@
             txtAddress.value = employee.address;
             txtMobile.value = employee.mobile;
             txtLand.value = employee.land;
-            dteDOAssignment.value = employee.doassignment;
-            txtDescription.value = employee.description;
+
 
             fillCombo(cmbGender, "Select Gender", genders, "name", employee.genderId.name);
             fillCombo(cmbDesignation, "Select Designation", designations, "name", employee.designationId.name);
             fillCombo(cmbCivilstatus, "Select Civil Status", civilstatuses, "name", employee.civilstatusId.name);
-            fillCombo(cmbEmployeestatus, "", employeestatuses, "name", employee.employeestatusId.name);
             //
             setDefaultFile('flePhoto', employee.photo);
 
             disableButtons(true, false, false);
             setStyle(valid);
-            changeTab('form');
+           // changeTab('form');
         }
 
         function getUpdates() {
@@ -711,7 +687,7 @@
                                 });
                                 loadSearchedTable();
                                 loadForm();
-                                changeTab('table');
+                               // changeTab('table');
 
                             }
                             else window.alert("Failed to Update as \n\n" + response);

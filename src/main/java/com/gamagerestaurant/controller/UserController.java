@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.*;
 
 @RequestMapping(value = "/user")
@@ -87,6 +88,8 @@ public class UserController {
         HashMap<String,Boolean> priv = PrevilageController.getPrivilages(exuser,"USER");
         if(exuser!= null && priv.get("add")){
             try {
+
+                user.setEmployeeId(user.getEmployeeId());
                 System.out.println("aaaaaaaaaaaaaaaaaa");
                 userService.saveUser(user);
                 return "0";

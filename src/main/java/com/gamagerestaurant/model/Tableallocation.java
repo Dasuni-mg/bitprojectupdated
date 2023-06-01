@@ -43,6 +43,10 @@ public class Tableallocation {
     @Basic(optional = false)
     private LocalDate addeddate;
 
+    @Column(name="guestcount")
+    @Basic(optional = false)
+    private Integer guestcount;
+
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "tablestatus_id", referencedColumnName = "id")

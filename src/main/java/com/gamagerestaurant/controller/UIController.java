@@ -84,7 +84,7 @@ public class UIController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUserName(auth.getName());
         if(user!= null){
-            modelAndView.setViewName("privilage.html");
+            modelAndView.setViewName("previlege1.html");
         }
         else
             modelAndView.setViewName("error.html");
@@ -632,6 +632,26 @@ public class UIController {
     }
 
 
+    @GetMapping(value = {"/tableallocation1" })
+    //function that execute the service
+    public ModelAndView TableAllocation1ui() {
+
+        //create model view object
+        ModelAndView modelAndView = new ModelAndView();
+
+        //get security context authentication object
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //get user from DB
+        User user = userService.findUserByUserName(auth.getName());
+        //Check user null
+        if(user!= null){
+            modelAndView.setViewName("tableallocation1.html");
+        }
+        else
+            modelAndView.setViewName("tableallocation.js");
+
+        return modelAndView;
+    }
 
 
 
@@ -677,6 +697,28 @@ public class UIController {
         //Check user null
         if(user!= null){
             modelAndView.setViewName("supplierarreas.html");
+        }
+        else
+            modelAndView.setViewName("error.html");
+
+        return modelAndView;
+    }
+
+    @GetMapping(value = {"/supplierarreas" })
+
+    //function that execute the service
+    public ModelAndView Supplierarreas1reportui() {
+
+        //create model view object
+        ModelAndView modelAndView = new ModelAndView();
+
+        //get security context authentication object
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //get user from DB
+        User user = userService.findUserByUserName(auth.getName());
+        //Check user null
+        if(user!= null){
+            modelAndView.setViewName("suparreas.html");
         }
         else
             modelAndView.setViewName("error.html");
@@ -743,6 +785,19 @@ public class UIController {
         User user = userService.findUserByUserName(auth.getName());
         if(user!= null){
             modelAndView.setViewName("user.html");
+        }
+        else
+            modelAndView.setViewName("error.html");
+
+        return modelAndView;
+    }
+    @RequestMapping(value = "/user1", method = RequestMethod.GET)
+    public ModelAndView user1() {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByUserName(auth.getName());
+        if(user!= null){
+            modelAndView.setViewName("user1.html");
         }
         else
             modelAndView.setViewName("error.html");

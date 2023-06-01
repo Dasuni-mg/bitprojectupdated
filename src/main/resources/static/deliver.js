@@ -23,6 +23,7 @@ function initialize() {
     txtMenuOrderCount.addEventListener("keyup", txtMenuOrderCountCH);
     cmbRegCustomer.addEventListener("change", cmbRegCustomerCH);
     txtAdvanceAmount.addEventListener("keyup", txtAdvanceAmountCH);
+    //txtLastPrice.addEventListener("keyup", txtLastPriceCH);
 
     privilages = httpRequest("../privilage?module=DELIVERY", "GET");
 
@@ -293,6 +294,9 @@ function txtDiscountRatioCH() {
     txtLastPrice.value = (tot - (tot * discount / 100)).toFixed(2);
     txtLastPrice.style.border = valid;
     reservation.lastprice = txtLastPrice.value;
+
+    txtLastPriceCH()
+
 }
 
 
@@ -355,13 +359,26 @@ function txtTAmountCH() {
 }
 
 function txtAdvanceAmountCH(){
-   let balance= (parseFloat(txtAdvanceAmount.value)-parseFloat(txtLastPrice.value)).toFixed(2);
+   let balance= parseFloat(txtLastPrice.value)-(parseFloat(txtAdvanceAmount.value)).toFixed(2);
 
-    txtBAmount.value = balance;
+    txtBAmount.value = balance.toFixed(2);
     txtBAmount.style.border = valid;
     reservation.balanceamount = txtBAmount.value;
 }
 
+function txtLastPriceCH(){
+    if(txtLastPrice.value>=10000.00){
+        cmbPMethod.disabled=false;
+        txtAdvanceAmount.disabled=false;
+        txtBAmount.disabled=true;
+
+
+    }else{
+        cmbPMethod.disabled=true;
+        txtAdvanceAmount.disabled=true;
+        txtBAmount.disabled=true;
+    }
+}
 function loadForm() {
     reservation = new Object();
     oldreservation = null;
@@ -400,6 +417,8 @@ function loadForm() {
     setStyle(initial);
     txtReservationNo.style.border = valid;
     txtDiscountRatio.style.border = valid;
+
+
 
 
     disableButtons(false, true, true);
@@ -1250,17 +1269,34 @@ function filldata(res) {
     console.log("RES ", reservation);
     oldreservation = JSON.parse(JSON.stringify(res));
 
+    customerpayment = JSON.parse(JSON.stringify(res));
+       oldcustomerpayment= JSON.parse(JSON.stringify(res));
+
 
     txtCName.value = reservation.cname;
     txtDmobile.value = reservation.cmobile;
     txtDAddress.value = reservation.deliveryaddress;
     txtDiscountRatio.value = reservation.discountratio;
+    txtSCharge.value = reservation.servicecharge;
+    txtDiscountRatio.disabled=true;
+    txtSCharge.disabled=true;
     txtLastPrice.value = reservation.lastprice;
+    txtLastPrice.disabled=true;
+
+    txtAdvanceAmount.value = customerpayment.currentamount;
+    txtAdvanceAmount.disabled=true;
+
 
 
     if (reservation.customer_id != null) {
 
         fillCombo(cmbRegCustomer, "Select Customer", customers, "mobileno", reservation.customer_id.mobileno);
+
+    }
+
+    if (customerpayment.cpmethod_id != null) {
+
+        fillCombo(cmbPMethod, "Select Method", cpmethods, "name", customerpayment.cpmethod_id.name);
 
     }
 
@@ -1284,7 +1320,7 @@ function getUpdates() {
 
     var updates = "";
 
-    if (reservation != null && oldreservation != null) {
+    if ((reservation != null && oldreservation != null)||(customerpayment != null && oldcustomerpayment != null) ){
 
         if (reservation.reservationno != oldreservation.reservationno)
             updates = updates + "\n Registration No is Changed";
@@ -1303,6 +1339,15 @@ function getUpdates() {
 
         if (reservation.lastprice != oldreservation.lastprice)
             updates = updates + "\n Last price is Changed";
+
+        // if (customerpayment.cpmethod_id != oldcustomerpayment.cpmethod_id)
+        //     updates = updates + "\n payment Method is Changed";
+
+        if (customerpayment.currentamount != oldcustomerpayment.currentamount)
+            updates = updates + "\n Advance Amount is Changed";
+
+        if (customerpayment.balanceamount != oldcustomerpayment.balanceamount)
+            updates = updates + "\n Balance Amount is Changed";
     }
 
     return updates;

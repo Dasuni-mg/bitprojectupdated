@@ -57,7 +57,7 @@
 
             <ul>
                 <li class="list">
-                    <a href="#">
+                    <a href="http://localhost:8080/dashboard">
                 <span class="icon"
                 ><ion-icon name="home-outline"></ion-icon
                 ></span>
@@ -115,9 +115,9 @@
 
     <!--Form-->
     <div class="bgForm">
-        <div class="row  text-black-50 ">
+        <div class="row  text-black ">
             <h3 class="p-3">
-               Material Management
+               Employee Management
             </h3>
         </div>
         <div class="row m-8 ">
@@ -143,29 +143,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-12">
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-3">
                                                                     <div class="form-group">
                                                                         <label class="ceylonLog" for="txtNumber"> <b>Employee Number : <span
                                                                                 style="color:red;">*</span></b></label>
                                                                         <div class="input-group flex-nowrap">
-                                                                            <span class="input-group-text" ><i class="fas fa-user-plus"></i></span>
+
                                                                             <input type="text" id="txtNumber" placeholder="Enter Number Here"
                                                                                    class="form-control" required disabled/>
 
                                                                         </div>
-                                                                        <small id="txtHelp" class="form-text text-muted autoLoad">Employee Number Auto Generated Here.</small>
+                                                                        <small id="txtHelp" class="form-text small autoLoad">Employee Number Auto Generated Here.</small>
 
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-3">
                                                                     <div class="form-group">
-                                                                        <label class="ceylonLog" for="txtCallingname"> <b>Employee Calling Name :
+                                                                        <label class="ceylonLog" for="txtCallingname"> <b>Emp. Calling Name :
                                                                             <span style="color:red;">*</span></b></label>
                                                                         <div class="input-group flex-nowrap">
-                                                                            <span class="input-group-text" ><i class="fas fa-id-card-alt"></i></span>
+
                                                                             <input type="text" id="txtCallingname" placeholder="eg :- Johne"
                                                                                    class="form-control" required
                                                                                    data-toggle="tooltip" data-placement="bottom"
@@ -173,44 +173,49 @@
                                                                                    onkeyup="textFieldBinder(txtCallingname,'^([A-Z][a-z]+)$','employee','callingname','oldemployee')"/>
 
                                                                         </div>
-                                                                        <small  class="form-text text-muted">Must be start the capital letter.</small>
+                                                                        <small  class="form-text small">Must be start the capital letter.</small>
 
 
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="ceylonLog" for="txtFullname"> <b>Employee Full Name : <span
-                                                                        style="color:red;">*</span></b></label>
-                                                                <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-user"></i></span>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label class="ceylonLog" for="txtFullname"> <b>Emp. Full Name : <span
+                                                                                style="color:red;">*</span></b></label>
+                                                                        <div class="input-group flex-nowrap">
+
                                                                     <textarea id="txtFullname" placeholder="Enter Full Name Here"
                                                                               class="form-control" required
                                                                               onkeyup="textFieldBinder(txtFullname,'^([a-zA-Z]+|[a-zA-Z]+\\s{1}[a-zA-Z]{1,}|[a-zA-Z]+\\s{1}[a-zA-Z]{3,}\\s{1}[a-zA-Z]{1,})$','employee','fullname','oldemployee')">
                                                     </textarea>
+                                                                        </div>
+
+                                                                        <small  class="form-text small">Numbers are not allow.</small>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group" id="print-form">
+                                                                        <script>
+                                                                            // (parentid, photofeildId,labletext,lablesize,type, maxsize,datarequerd,object, property , oldobject )
+                                                                            fileChooser('print-form', 'flePhoto', 'Photo', 4, ['.jpg', '.png'], 5, true, 'employee', 'photo', 'oldemployee');
+                                                                        </script>
+                                                                    </div>
                                                                 </div>
 
-                                                                <small  class="form-text text-muted">Numbers are not allow.</small>
+                                                            </div>
 
-                                                            </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group" id="print-form">
-                                                                <script>
-                                                                    // (parentid, photofeildId,labletext,lablesize,type, maxsize,datarequerd,object, property , oldobject )
-                                                                    fileChooser('print-form', 'flePhoto', 'Photo', 4, ['.jpg', '.png'], 5, true, 'employee', 'photo', 'oldemployee');
-                                                                </script>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label class="ceylonLog" for="txtNIC"> <b>Employee NIC : <span
                                                                         style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-address-card"></i></span>
+
                                                                     <input type="text" id="txtNIC"
                                                                            placeholder="9 digits plus vVxX or 12 digits"
                                                                            class="form-control" required
@@ -219,101 +224,83 @@
                                                                            onkeyup="nicTestFieldBinder(txtNIC,'^(([0-9]{9}[vVxX])|([0-9]{12}))$','','','')"/>
 
                                                                 </div>
-                                                                <small  class="form-text text-muted">The length is must be 9 or 12 digits.</small>
+                                                                <small  class="form-text small">The length is must be 9 or 12 digits.</small>
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label class="ceylonLog" for="cmbGender"><b>Gender : <span
                                                                         style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-restroom"></i></span>
+
                                                                     <select id="cmbGender" class="form-control" disabled required
                                                                             onchange="comboBoxBinder(cmbGender,'','employee','genderId','oldemployee')"></select>
 
                                                                 </div>
-                                                                <small  class="form-text text-muted autoLoad">Gender is Auto Selected Here.</small>
+                                                                <small  class="form-text small autoLoad">Gender is Auto Selected Here.</small>
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label class="ceylonLog" for="dteDOBirth"> <b>Birth Date : <span
                                                                         style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-calendar-week"></i></span>
                                                                     <input type="date" id="dteDOBirth" class="form-control" disabled
                                                                            required
                                                                            onkeyup="textFieldBinder(dteDOBirth,'','employee','dobirth','oldemployee')"/>
                                                                 </div>
-                                                                <small  class="form-text text-muted autoLoad">Birth day is Auto Selected Here.</small>
+                                                                <small  class="form-text small autoLoad">Birth day is Auto Selected Here.</small>
 
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <label class="ceylonLog" for="txtAddress"> <b>Employee Address : <span
                                                                         style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-street-view"></i></span>
                                                                     <textarea id="txtAddress" placeholder="Enter Address Here"
                                                                               class="form-control" required
                                                                               onkeyup="textFieldBinder(txtAddress,'^([\\w\\/\\-,\\s]{2,})$','employee','address','oldemployee')"></textarea>
                                                                 </div>
-                                                                <small  class="form-text text-muted">Any characters allow.</small>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mt-2">
-                                                            <div class="form-group">
-                                                                <label class="ceylonLog" for="txtDescription"> <b>Employee Description : </b></label>
-                                                                <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-sticky-note"></i></span>
-                                                                    <textarea id="txtDescription"
-                                                                              placeholder="Enter Description Here (optional)"
-                                                                              class="form-control"
-                                                                              onkeyup="textFieldBinder(txtDescription,'^.*$','employee','description','oldemployee')"></textarea>
-                                                                </div>
-                                                                <small  class="form-text text-muted">Any characters allow.</small>
+                                                                <small  class="form-text small">Any characters allow.</small>
 
                                                             </div>
                                                         </div>
                                                     </div>
 
+
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <div class="form-group">
-                                                                <label class="ceylonLog" for="txtMobile"> <b>Employee Mobile-Number : <span
+                                                                <label class="ceylonLog" for="txtMobile"> <b>Emp. Mobile-Number : <span
                                                                         style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-mobile-alt"></i></span>
+
                                                                     <input type="text" id="txtMobile"
                                                                            placeholder="Enter Mobile-Number Here"
                                                                            class="form-control" required
                                                                            onkeyup="textFieldBinder(txtMobile,'^0\\d{9}$','employee','mobile','oldemployee')"/>
 
                                                                 </div>
-                                                                <small  class="form-text text-muted">The length is must be enter the 10 digits.</small>
+                                                                <small  class="form-text small">The length is must be enter the 10 digits.</small>
 
                                                             </div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <div class="form-group">
-                                                                <label class="ceylonLog" for="txtLand"> <b>Employee Land-Number :<span
+                                                                <label class="ceylonLog" for="txtLand"> <b>Emp. Land-Number :<span
                                                                         style="visibility: hidden;">*</span>
                                                                 </b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-phone"></i></span>
+
                                                                     <input type="text" id="txtLand"
                                                                            placeholder="Enter Land-Number Here (optional)"
                                                                            class="form-control"
                                                                            onkeyup="textFieldBinder(txtLand,'^0\\d{9}$','employee','land','oldemployee')"/>
                                                                 </div>
-                                                                <small  class="form-text text-muted">The length is must be enter the 10 digits.</small>
+                                                                <small  class="form-text small">The length is must be enter the 10 digits.</small>
 
 
                                                             </div>
@@ -324,11 +311,11 @@
                                                                 <label class="ceylonLog" for="cmbCivilstatus"><b>Civilstatus : <span
                                                                         style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-user-check"></i></span>
+
                                                                     <select id="cmbCivilstatus" class="form-control" required
                                                                             onchange="comboBoxBinder(cmbCivilstatus,'','employee','civilstatusId','oldemployee')"></select>
                                                                 </div>
-                                                                <small  class="form-text text-muted">Select the civil status.</small>
+                                                                <small  class="form-text small">Select the civil status.</small>
 
                                                             </div>
                                                         </div>
@@ -337,59 +324,16 @@
                                                                 <label class="ceylonLog" for="cmbDesignation"><b> Employee Designation :
                                                                     <span style="color:red;">*</span></b></label>
                                                                 <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-user-tie"></i></span>
+
                                                                     <select id="cmbDesignation" class="form-control" required
                                                                             onchange="comboBoxBinder(cmbDesignation,'','employee','designationId','oldemployee')"></select>
 
                                                                 </div>
-                                                                <small  class="form-text text-muted">Select the Designation.</small>
+                                                                <small  class="form-text small">Select the Designation.</small>
 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="ceylonLog" for="dteDOAssignment"> <b>Employee Assignment Date :
-                                                                    <span style="color:red;">*</span></b></label>
-                                                                <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-calendar-alt"></i></span>
-                                                                    <input type="date" id="dteDOAssignment" class="form-control"
-                                                                           required
-                                                                           onkeyup="textFieldBinder(dteDOAssignment,'','employee','doassignment','oldemployee')"/>
-                                                                </div>
-                                                                <small  class="form-text text-muted autoLoad">Assignment Date is Auto Selected Here.</small>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="ceylonLog" for="cmbEmployeestatus"><b>Employee Status : <span
-                                                                        style="color:red;">*</span></b></label>
-                                                                <div class="input-group flex-nowrap">
-                                                                    <span class="input-group-text" ><i class="fas fa-user-shield"></i></span>
-                                                                    <select id="cmbEmployeestatus" class="form-control" required
-                                                                            onchange="comboBoxBinder(cmbEmployeestatus,'','employee','employeestatusId','oldemployee')"></select>
-                                                                </div>
-                                                                <small  class="form-text text-muted autoLoad">Status is Auto Selected Here.</small>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="text-center mt-2">
-                                                        <button class="btn clearAllbtn ceylonLog" type="button" id="btnClear" style="width: 25%">
-                                                            <i class="fas fa-recycle mr-2"></i> Clear
-                                                        </button>
-                                                        <button class="btn updateAllbtn ceylonLog" type="submit" id="btnUpdate"
-                                                                style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
-                                                        <button class="btn addAllbtn ceylonLog" style="width: 25%" type="submit" id="btnAdd">
-                                                            <i class='fas fa-plus-circle mr-2'></i>Add
-                                                        </button>
-
-                                                    </div>
-
 
                                                 </form>
                                             </div>
@@ -400,27 +344,18 @@
 
                             </div>
                             <div class="col-md-2"></div>
+                            <div class="text-center mt-2">
+                                <button class="btn clearAllbtn button-86 ceylonLog" type="button" id="btnClear" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn updateAllbtn button-86 ceylonLog" type="submit" id="btnUpdate"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                <button class="btn addAllbtn button-86 ceylonLog" style="width: 25%" type="submit" id="btnAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
 
-                            <!--Clear/Update/Delete buttons-->
-                            <div class="row mt-2 p-2">
-                                <div class="col-md-12">
-
-                                    <div class="text-right">
-                                        <button class="btn button " type="button" id="btnClear"
-                                                style="width: 25%">
-                                            <i class="fas fa-recycle mr-2"></i> Clear
-                                        </button>
-                                        <button class="btn button " type="submit" id="btnUpdate"
-                                                style="width: 25%"><i class="fas fa-edit mr-2"></i>
-                                            Update
-                                        </button>
-                                        <button class="btn button" style="width: 25%" type="submit"
-                                                id="btnAdd">
-                                            <i class='fas fa-plus-circle mr-2'></i>Add
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
+
                             </form>
                         </div>
 
@@ -496,16 +431,16 @@
                 </script>
                 <div class="card mt-4">
                     <div class="card-body">
-                        <h5 class="card-title">Material History</h5>
+                        <h5 class="card-title">Employee History</h5>
                         <div class="d-flex justify-content-around align-items-center">
                             <img
-                                    src="./resources/image/cart/material.png"
+                                    src="./resources/image/employee.png"
                                     width="90px"
                                     height="90px"
                                     alt="deliver"
                             />
                             <a
-                                    href="http://localhost:8080/material"
+                                    href="http://localhost:8080/employee1"
                                     type="button"
                                     class="btn button-view"
                                     data-toggle="modal" data-target="#tableview"
@@ -520,7 +455,7 @@
         </div>
 
         <!--Table- Modal -->
-        <div class="modal fade" id="tableview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade " id="tableview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
@@ -530,7 +465,7 @@
                             <div class="container-fluid">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-3">
-                                        <a class="btn button  font-weight-bold" href="http://localhost:8080/qrequest">Q-Request</a>
+                                        <a class="btn button  font-weight-bold" href="http://localhost:8080/employee1">Employee form</a>
 
                                     </div>
                                     <div class="col-md-3">
@@ -548,7 +483,7 @@
 
                                 </div>
 
-                                <div class="modal fade" id="qrViewModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="ReservationViewModal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel"
                                      aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -560,44 +495,72 @@
 
                                             </div>
                                             <div class="modal-body container-print">
-                                                <table id="tablePrintEmployee"
-                                                       class=" table table-striped shadow rounded">
-                                                    <thead class="text-white bg-black ">
-                                                    <h3> View Q-Request</h3>
-                                                    </thead>
-                                                    <div class="modal-body">
-                                                        <table id="printformtable" class="mt-5 table table-bordered table-striped">
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>QR Code :</td>
-                                                                <td id="tdQRcode"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Supplier :</td>
-                                                                <td id="tdsupid"></td>
-                                                            </tr>
+                                                <table id="printformtable" class="mt-5 table table-bordered table-striped">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Employee Number :</th>
+                                                        <td id="x"><input type="text" id="tdnum" style="border: 0px solid; border-color: white"></td>
+                                                        <th>Employee Full Name :</th>
+                                                        <td id="tdfname"></td>
+                                                    </tr>
 
-                                                            <tr>
-                                                                <td>Employee :</td>
-                                                                <td id="tdemployee"></td>
-                                                            </tr>
-                                                                                                                      <tr>
-                                                                <td>Required Date :</td>
-                                                                <td id="tdRdate"></td>
-                                                            </tr>
+                                                    <tr>
+                                                        <th>Employee Calling Name :</th>
+                                                        <td id="tdcname"></td>
+                                                        <th>Employee Nic :</th>
+                                                        <td id="tdnic"></td>
+                                                    </tr>
 
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="modal-footer bg-black">
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close
-                                                        </button>
-                                                        <button type="button" class="btn btn-light"
-                                                                onclick="btnPrintRowMC()">Print
-                                                        </button>
-                                                    </div>
+                                                    <tr>
+                                                        <th>Employee Gender :</th>
+                                                        <td id="tdgender"></td>
+                                                        <th>Employee DOB :</th>
+                                                        <td id="tddob"></td>
+                                                    </tr>
 
+                                                    <tr>
+                                                        <th>Employee Civil Status :</th>
+                                                        <td id="tdcvstatus"></td>
+                                                        <th>Employee Address :</th>
+                                                        <td id="tdaddress"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>Employee Photo :</th>
+                                                        <td><img id="tdphoto" width="100px" height="100px"></td>
+                                                        <th>Employee Mobile Nmber :</th>
+                                                        <td id="tdmobile"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>Employee Land Number :</th>
+                                                        <td id="tdland"></td>
+                                                        <th>Employee Designation :</th>
+                                                        <td id="tddesg"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>Assign Reservation :</th>
+                                                        <td id="tdres"></td>
+                                                        <th>Project Title :</th>
+                                                        <td id="tdprotitle"></td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <th>Employee Assign Date :</th>
+                                                        <td id="tdasdate"></td>
+                                                        <th>Employee Status :</th>
+                                                        <td id="tdestatus"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>Employee Description :</th>
+                                                        <td id="tddesc"></td>
+                                                        <th>Printing the Employee Details :</th>
+                                                        <td><button type="button" style="background-color: #77b9b9" class="btn ceylonLog" onclick="btnPrintRowMC();">Print Page</button></td>
+                                                    </tr>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -621,60 +584,49 @@
                                     <div class="table-responsive" id="tableParent" class="table-container m-5"
                                     >
 
-
                                         <script>
 
                                             function getNameColumn(ob) {
                                                 return ob.callingname + "(" + ob.number + ")";
                                             }
 
+                                            // if(JSON.parse(avnvemp.value).id==1){
+                                            //     avemp = httpRequest("/employee/avemp="+JSON.parse(avnvemp.value).id,"GET")
+                                            // }else{
+                                            //     notavemp = httpRequest("employee/notavemp="+JSON.parse(avnvemp.value).id,"GET");
+                                            // }
+
+                                            function getEmployeestatus(){
+
+                                            }
+
                                             var metadata = [
-                                                {
-                                                    name: 'Material Code',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialcode'
-                                                },
-                                                {
-                                                    name: 'Material Name',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialname'
-                                                },
-                                                {
-                                                    name: 'Unit Size',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'unitsize'
-                                                },
-                                                {
-                                                    name: 'Added Date',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'addeddate'
-                                                },
-                                                {
-                                                    name: 'Material Status',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialstatus_id.name'
-                                                },
-                                                {
-                                                    name: 'Material Categoory',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialcategory_id.name'
-                                                },
-                                                {
-                                                    name: 'Unit Type',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'unittype_id.name'
-                                                },
+                                                {name: 'Number', search: true, datatype: 'text', property: 'id'},
+                                                {name: 'Name', search: true, datatype: 'text', property: 'callingname'},
+                                                // {name: 'Mobile', search: true, datatype: 'text', property: 'mobile'},
+                                                // {
+                                                //     name: 'Designation',
+                                                //     search: true,
+                                                //     datatype: 'text',
+                                                //     property: 'designationId.name'
+                                                // },
+                                                // {
+                                                // name: 'Status',
+                                                // search: true,
+                                                // datatype: 'text',
+                                                // property: 'employeestatusId.name'
+
+
+                                                // name: 'Status',
+                                                // search: true,
+                                                // datatype: 'text',
+                                                //  property: getEmployeestatus
+
                                             ];
-                                            table("tableParent", "tblMaterial", metadata, true);
+                                            table("tableParent", "tblEmployee", metadata, true);
 
                                         </script>
+
 
                                     </div>
 
@@ -699,14 +651,22 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="modal-footer">
+
                             </div>
                         </div>
+
+
                     </div>
                 </div>
+
+
             </div>
+
         </div>
+
     </div>
 </div>
 </body>

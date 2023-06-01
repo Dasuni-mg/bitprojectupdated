@@ -37,10 +37,11 @@
     <script src="resources/script/innertablefunctions.js"></script>
     <script src="resources/script/common.bitproject.js"></script>
     <script src="customertable.js"></script>
-<!--    <link rel="stylesheet" href="resources/style/common.css">-->
+    <!--    <link rel="stylesheet" href="resources/style/common.css">-->
 
 
     <title>Hello,Gamage!</title>
+    <link rel="icon" type="image/x-icon" href="./resources/image/cart/chef.png">
 </head>
 <body>
 <!--script-->
@@ -121,8 +122,13 @@
     <div class="bgForm">
         <div class="row  text-black ">
             <h3 class="p-3">
-                Customer Management
+              Table allocation Management
             </h3>
+        </div>
+        <div class="row">
+            <pre>
+
+            </pre>
         </div>
         <div class="row m-8  ">
             <div class="col-md-9">
@@ -151,34 +157,48 @@
                          class="table-container m-5" >
 
                         <script>
-                            function getCustomerName(ob) {
-                                return ob.fname + " " + ob.lname;
+
+                            function getNameColumn(ob) {
+                                return ob.callingname + "(" + ob.number + ")";
                             }
 
-                            var metadata = [{
-                                name: 'Regno',
-                                search: true,
-                                datatype: 'text',
-                                property: 'regno'
-                            }, {
-                                name: 'Customer Name',
-                                search: true,
-                                datatype: 'text',
-                                property: getCustomerName
-                            }, {
-                                name: 'Mobile No',
-                                search: true,
-                                datatype: 'text',
-                                property: 'mobileno'
-                            },
-                                 {
-                                    name: 'Address',
+                            var metadata = [
+                                {
+                                    name: 'Tbl Allocation Code',
                                     search: true,
                                     datatype: 'text',
-                                    property: 'address'
-                                },];
-                            //table function
-                            table("tableParent", "tblCustomer", metadata, true);
+                                    property: 'tableallocationcode'
+                                },
+                                {name: 'Added Date', search: true, datatype: 'text', property: 'addeddate'},
+                                {
+                                    name: 'Reserved Date',
+                                    search: true,
+                                    datatype: 'text',
+                                    property: 'reserveddate'
+                                },
+                                {
+                                    name: 'Reserved Time',
+                                    search: true,
+                                    datatype: 'text',
+                                    property: 'reservetime'
+                                },
+
+                                {
+                                    name: 'Rervation no',
+                                    search: true,
+                                    datatype: 'text',
+                                    property: 'reservation_id.reservationno'
+                                },
+                                {
+                                    name: 'Tbl Status',
+                                    search: true,
+                                    datatype: 'text',
+                                    property: 'tablestatus_id.name'
+                                },
+
+                            ];
+                            table("tableParent", "tblTableallocation", metadata, true);
+
                         </script>
                     </div>
 
@@ -222,7 +242,7 @@
                                 <table id="tablePrintEmployee"
                                        class=" table table-striped shadow rounded">
                                     <thead class="text-white bg-black ">
-                                    <h3> View Customer Details</h3>
+                                    <h3> View Table Allocation Details</h3>
                                     </thead>
                                     <div class="modal-body">
                                         <table id="printformtable"
@@ -341,10 +361,10 @@
                     </script>
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h5 class="card-title">Customer </h5>
+                            <h5 class="card-title">Table Allocation </h5>
                             <div class="d-flex justify-content-around align-items-center">
                                 <img
-                                        src="./resources/image/customer.png"
+                                        src="./resources/image/table.png"
                                         width="90px"
                                         height="90px"
                                         alt="employee"
@@ -353,16 +373,18 @@
 
                                         type="button"
                                         class="btn button-view"
-                                        data-toggle="modal" data-target="#exampleModal"
+                                        data-toggle="modal" data-target="#tnlAllocation"
                                 >
-                                     + New Customer
+                                    Allocation
                                 </a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+                <!--Table Allocation - Modal -->
+                <div class="modal fade" id="tnlAllocation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
@@ -371,7 +393,7 @@
                                 <!--Form-->
                                 <div class="row  text-black  ">
                                     <h2>
-                                        Customer Management
+                                        Table Allocation Management
                                     </h2>
                                 </div>
                                 <div class="row m-8 divBody ">
@@ -382,147 +404,187 @@
                                                 <div class=" card-body">
 
                                                     <div class="row ">
-                                                        <form class="" id="employeeform" onsubmit="return false">
+                                                        <form class="" id="alocationform" onsubmit="return false">
                                                             <div class="row mt-2">
                                                                 <div class="col-md-2"></div>
                                                                 <!--form-->
                                                                 <div class="col-md-12 p-3">
-                                                                    <!--Registration NO/first name-->
+                                                                    <!--Allocation Code/Reservation/Reserved Date-->
                                                                     <div class="row mt-2 ">
                                                                         <div class="col-md-4">
                                                                             <div class="form-group text-black">
-                                                                                <label for="txtRegNo"><b>Registration
-                                                                                    No:
+                                                                                <label for="txtTAcode"><b>Allocation Code:
                                                                                     <span style="color: red;">*</span></b></label>
                                                                                 <div class="input-group">
-                                                                                    <input type="text" class="form-control"
-                                                                                           id="txtRegNo"
-                                                                                           placeholder="Enter Registration No"
+                                                                                    <input type="text"
+                                                                                           class="form-control"
+                                                                                           id="txtTAcode"
                                                                                            required
-                                                                                           data-toggle="tooltip"
-                                                                                           data-placement="bottom"
-                                                                                           title="Enter five digits for Registration No-Eg: 12345"
-                                                                                           onkeyup="textFieldBinder(txtRegNo,'^[0-9]{5}$','customer','regno','olditem')">
+                                                                                    >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group text-black">
-                                                                                <label for="txtFname"><b>First
-                                                                                    Name: <span
+                                                                                <label for="cmbReservation"><b>Reservation: <span
+                                                                                        style="color: red;">*</span></b></label>
+                                                                                <div class="input-group">
+                                                                                    <select id="cmbReservation"
+                                                                                            class="form-control"
+                                                                                            required
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
+                                                                                            onchange="comboBoxBinder(cmbReservation,'','tableallocation','reservation_id','oldtableallocation')">
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group text-black ">
+                                                                                <label for="txtRRDate"><b>Reserved
+                                                                                    date: <span
                                                                                             style="color: red;">*</span></b></label>
                                                                                 <div class="input-group">
-                                                                                    <input type="text" class="form-control"
-                                                                                           id="txtFname"
-                                                                                           placeholder="Enter First Name"
+                                                                                    <input type="date"
+                                                                                           class="form-control"
+                                                                                           id="txtRRDate"
+                                                                                           placeholder="Enter Reserved Date"
                                                                                            required
                                                                                            data-toggle="tooltip"
                                                                                            data-placement="bottom"
-                                                                                           title="First Letter of the firstname shoud be capital  Eg:Dasuni"
-                                                                                           onkeyup="textFieldBinder(txtFname,'^([A-Z][a-z]+)$','customer','fname','oldcustomer')">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group text-black ">
-                                                                                <label for="txtLname"><b>Last
-                                                                                    Name: <span
-                                                                                            style="color: red;">*</span></b></label>
-                                                                                <div class="input-group">
-
-                                                                                    <input type="text" class="form-control"
-                                                                                           id="txtLname"
-                                                                                           placeholder="Enter Last Name" required
-                                                                                           data-toggle="tooltip"
-                                                                                           data-placement="bottom"
-                                                                                           title="First Letter of the last name shoud be capital Eg:Gamage"
-                                                                                           onkeyup="textFieldBinder(txtLname,'^([A-Z][a-z]+)$','customer','lname','oldcustomer')">
+                                                                                           title="2022-05-04"
+                                                                                           onchange="textFieldBinder(txtRRDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','tableallocation','reserveddate','oldstableallocation')"
+                                                                                    >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-
-                                                                    <!--last name/contact No 1-->
                                                                     <div class="row mt-2 ">
-
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group text-black ">
-                                                                                <label for="txtmno1"><b>Contact
-                                                                                    no1: <span
-                                                                                            style="color: red;">*</span></b></label>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group text-black">
+                                                                                <label for="txtRTime"><b>Reserved Time:
+                                                                                    <span style="color: red;">*</span></b></label>
                                                                                 <div class="input-group">
-
-                                                                                    <input type="text" class="form-control"
-                                                                                           id="txtmno1"
-                                                                                           placeholder="Enter contact no 1 "
+                                                                                    <input type="time"
+                                                                                           class="form-control"
+                                                                                           id="txtRTime"
+                                                                                           placeholder="Enter the Time"
                                                                                            required
                                                                                            data-toggle="tooltip"
                                                                                            data-placement="bottom"
-                                                                                           title="Number must have 10 numbers  Eg: 0768354408"
-                                                                                           onkeyup="textFieldBinder(txtmno1,'^0\\d{9}$','customer','mobileno','oldcustomer')">
+                                                                                           title="9.00 AM/PM"
+                                                                                           onchange="textFieldBinder(txtRTime,'','tableallocation','reservetime','oldtableallocation')"
+                                                                                    >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group text-black ">
-                                                                                <label for="txtmno2"><b>Contact no2:
-                                                                                </b></label>
-                                                                                <div class="input-group">
-
-                                                                                    <input type="text" class="form-control"
-                                                                                           id="txtmno2"
-                                                                                           placeholder="Enter contact no 2 "
-                                                                                           data-toggle="tooltip"
-                                                                                           data-placement="bottom"
-                                                                                           title="Number must have 10 numbers  Eg:0710660082"
-                                                                                           onkeyup="textFieldBinder(txtmno2,'^0\\d{9}$','customer','secondno','oldcustomer')">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--contact no2/NIC-->
-                                                                    <div class="row mt-2 ">
-
                                                                         <div class="col-md-4">
-                                                                            <div class="form-group text-black ">
-
-                                                                                <label for="txtNic"><b>NIC:</b>
-                                                                                </label>
+                                                                            <div class="form-group text-black">
+                                                                                <label for="cmbTStatus"><b>Table Status: <span
+                                                                                        style="color: red;">*</span></b></label>
                                                                                 <div class="input-group">
+                                                                                    <select id="cmbTStatus"
+                                                                                            class="form-control"
+                                                                                            required
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
 
-                                                                                    <input type="text" class="form-control"
-                                                                                           id="txtNic"
-                                                                                           placeholder="Enter NIC"
-                                                                                           data-toggle="tooltip"
-                                                                                           data-placement="bottom"
-                                                                                           title="9 digite plus vVxX or 12 digits  Eg:967751979V"
-                                                                                           onkeyup="textFieldBinder(txtNic,'^(([\\d]{9}[vVxX])|([\\d]{12}))$','customer','nic','oldcustomer')">
+                                                                                            onchange="comboBoxBinder(cmbTStatus,'','tableallocation','tablestatus_id','oldtableallocation')">
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group text-black ">
-                                                                                <label for="txtAddress"><b>Customer
-                                                                                    Address:
-                                                                                    <span style="color: red;">*</span></b>
-                                                                                </label>
+                                                                                <label for="txtGCount"><b>Guest Count:<span
+                                                                                        style="color: red;">*</span></b></label>
                                                                                 <div class="input-group">
+                                                                                    <input type="text"
+                                                                                           class="form-control"
+                                                                                           id="txtGCount"
+                                                                                           placeholder="Enter Guest Count"
+                                                                                           required
+                                                                                           data-toggle="tooltip"
+                                                                                           data-placement="bottom"
 
-
-                                                                        <textarea id="txtAddress"
-                                                                                  placeholder="Enter Address"
-                                                                                  class="form-control"
-                                                                                  placeholder="Enter Address"
-                                                                                  onkeyup="textFieldBinder(txtAddress,'^.*$','customer','address','oldcustomer')">
-                                                                </textarea>
+                                                                                           onchange="textFieldBinder(txtGCount,'^(?!0+$)\\d+$','tableallocation','guestcount','oldstableallocation')"
+                                                                                    >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                    </div>
 
+                                                                    <div class="card">
+                                                                        <div class="card-header headding-inner m-3"
+                                                                        >
+                                                                            <h4 class="text-black flex justify-content-center">Table Detail</h4>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <div class="row mt-2 p-3">
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-group text-dark ">
+                                                                                                <label for="cmbInnerTableDetail"
+                                                                                                       class="font-weight-bold"><b>Table
+                                                                                                    Detail :
+                                                                                                    <span
+                                                                                                            style="color: red;">*</span></b>
+                                                                                                </label>
+                                                                                                <select id="cmbInnerTableDetail"
+                                                                                                        class="form-control"
+                                                                                                        data-toggle="tooltip"
+                                                                                                        data-placement="bottom"
+                                                                                                        title="Please select Table detail"
+                                                                                                        onchange="comboBoxBinder(cmbInnerTableDetail,'','tableallocationHastabledetail','tableddetail_id','oldtableallocationHastabledetail')"
+                                                                                                >
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row mt-3">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="text-right">
+                                                                                                <button class="btn button-86 "
+                                                                                                        type="button"
+                                                                                                        id="btnInnerClearT"
+                                                                                                        style="width: 25%">
+                                                                                                    <i class="fas fa-recycle mr-2"></i>
+                                                                                                    Clear
+                                                                                                </button>
+                                                                                                <button class="btn button-86"
+                                                                                                        style="width: 25%" type="button"
+                                                                                                        id="btnInnerAddT"
+                                                                                                        onclick="btnInnerAddMCT()">
+                                                                                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!-- Inner table area-->
+                                                                            <div class="row mt-3" id="innertableT">
+
+                                                                                <script>
+                                                                                    var metadatainner = [
+
+                                                                                        {
+                                                                                            name: 'Table detail',
+                                                                                            search: true,
+                                                                                            datatype: 'text',
+                                                                                            property: 'tableddetail_id.nofchairs'
+                                                                                        },
+
+                                                                                    ];
+                                                                                    tableForInnerForm("innertableT", "tblInnertblAllocation", metadatainner, true);                                                            </script>
+                                                                            </div>
+                                                                        </div>
 
                                                                     </div>
+
                                                                 </div>
 
 
@@ -542,19 +604,19 @@
 
                                         <div class="card mt-4">
                                             <div class="card-body">
-                                                <h5 class="card-title">Customer History</h5>
+                                                <h5 class="card-title">Table allocation History</h5>
                                                 <div class="d-flex justify-content-around align-items-center">
                                                     <img
-                                                            src="./resources/image/customer.png"
+                                                            src="./resources/image/table.png"
                                                             width="90px"
                                                             height="90px"
-                                                            alt="employee"
+                                                            alt="tblallocation"
                                                     />
                                                     <a
 
                                                             type="button"
                                                             class="btn button-view"
-                                                            href="http://localhost:8080/customer"
+                                                            href="http://localhost:8080/tableallocation"
                                                     >
                                                         View History
                                                     </a>
@@ -604,6 +666,7 @@
             </div>
 
         </div>
+
     </div>
 </div>
 </body>

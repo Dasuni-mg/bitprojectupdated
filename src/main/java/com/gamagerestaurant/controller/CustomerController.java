@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping(value = "/customer")
 
 //request services of customer
-public class CustomerController {
+public class  CustomerController {
 
     @Autowired
     private PrevilageController previlageController;

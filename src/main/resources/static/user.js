@@ -93,7 +93,6 @@ window.addEventListener("load", initialize);
             olduser = null;
 
             fillCombo(cmbEmployee,"Select Employee",employeeswithoutusers,"callingname","");
-            fillCombo(cmbEmployeeCreated,"Loged Employee",employees,"callingname",session.getObject("activeuser").employeeId.callingname);
             fillCombo(cmbUserRoles,"",roleslist,"role","");
 
             var today = new Date();
@@ -105,25 +104,25 @@ window.addEventListener("load", initialize);
             dteDOCreated.value=today.getFullYear()+"-"+month+"-"+date;
 
             user.docreation=dteDOCreated.value;
-            user.employeeCreatedId=JSON.parse(cmbEmployeeCreated.value);
 
 
-            chkStatus.checked = true;
-            user.active = true;
-            $('#chkStatus').bootstrapToggle('on')
+
+            // chkStatus.checked = true;
+            // user.active = true;
+            // $('#chkStatus').bootstrapToggle('on')
 
             txtUsername.value = "";
             txtPassword.value = "";
             txtRetypePassword.value = "";
-            txtDescription.value = "";
+
 
             setStyle(initial);
 
             dteDOCreated.style.border=valid;
 
-            cmbEmployeeCreated.style.border=valid;
+
             disableButtons(false, true, true);
-            cmbEmployeeCreated.disabled="disabled";
+
         }
 
         function setStyle(style) {
@@ -133,8 +132,8 @@ window.addEventListener("load", initialize);
             txtRetypePassword.style.border = style;
             cmbEmployee.style.border = style;
             dteDOCreated.style.border = style;
-            txtDescription.style.border = style;
-            cmbEmployeeCreated.style.border = style;
+
+
             cmbUserRoles.style.border = style;
 
         }
@@ -234,7 +233,7 @@ function disableButtons(add, upd, del) {
 
                 swal({
                     title: "Are you sure to add following User ?",
-                    text: "\nEmployee : " + user.employeeId.callingname +
+                    text:
                         "\nUsername : " + user.userName +
                         "\nUser email : " + user.email +
                         "\nCreated By : " + user.employeeCreatedId.callingname,
@@ -331,24 +330,20 @@ function filldata(usr) {
 
                 txtUsername.value = user.userName;
                 dteDOCreated.value = user.docreation;
-                txtDescription.value = user.description;
+
                 txtUsername.disabled="disabled";
                 txtPassword.disabled="disabled";
                 txtRetypePassword.disabled="disabled";
                 dteDOCreated.disabled="disabled";
 
-                if(!user.active){
-                    chkStatus.checked = false;
-                    $('#chkStatus').bootstrapToggle('off')
-                }else {
-                    chkStatus.checked = true;
-                    $('#chkStatus').bootstrapToggle('on')
-                }
+                // if(!user.active){
+                //     chkStatus.checked = false;
+                //     $('#chkStatus').bootstrapToggle('off')
+                // }else {
+                //     chkStatus.checked = true;
+                //     $('#chkStatus').bootstrapToggle('on')
+                // }
                 fillCombo(cmbEmployee, "", employees, "callingname", user.employeeId.callingname);
-
-                fillCombo(cmbEmployeeCreated, "", employees, "callingname", user.employeeCreatedId.callingname);
-                cmbEmployee.disabled="disabled";
-                cmbEmployeeCreated.disabled="disabled";
 
 
                 setStyle(valid);

@@ -11,6 +11,7 @@ import com.gamagerestaurant.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.core.Authentication;
@@ -90,27 +91,54 @@ public class EmployeeController {
          return employee;
     }
 
+
+
+
     @GetMapping(value = "/nextNumber", produces = "application/json")
     public Employee nextNumber() {
         String nextnumber = dao.getNextNumber();
         LocalDate cdate =  java.time.LocalDate.now();
-        String cdates = cdate.toString().substring(2,4);
+        String cdates = cdate.toString().substring(2,4);//2022 n 22 gnnawa toString walin string krla
         if(nextnumber!=""){
-            String fisttwo = nextnumber.substring(0,2);
+            String fisttwo = nextnumber.substring(0,2);//220014 n 22 gnnwa
             if(cdates.equals(fisttwo)){
-                nextnumber = cdates+String.format("%04d", Integer.parseInt(nextnumber.substring(3))+1);
+                nextnumber = cdates+String.format("%04d", Integer.parseInt(nextnumber.substring(3))+1);//digit 4k 0 set krnwa nxt number eka substr krla ekathu krla
+
             }else{
-                nextnumber = cdates+"0001";
+                nextnumber = cdates+"0001";//neththan eekata 0001k concat krnwa
+                System.out.println("EMP "+nextnumber);
             }
 
         }else{
             nextnumber = cdates+"0001";
         }
 
-       Employee emp = new Employee(nextnumber);
+        Employee emp = new Employee(nextnumber);
         return emp;
 
     }
+
+//    @GetMapping(value = "/nextNumber", produces = "application/json")
+//    public Employee nextNumber() {
+//        String nextnumber = dao.getNextNumber();
+//        LocalDate cdate =  java.time.LocalDate.now();
+//        String cdates = cdate.toString().substring(2,4);
+//        if(nextnumber!=""){
+//            String fisttwo = nextnumber.substring(0,2);
+//            if(cdates.equals(fisttwo)){
+//                nextnumber = cdates+String.format("%04d", Integer.parseInt(nextnumber.substring(3))+1);
+//            }else{
+//                nextnumber = cdates+"0001";
+//            }
+//
+//        }else{
+//            nextnumber = cdates+"0001";
+//        }
+//
+//       Employee emp = new Employee(nextnumber);
+//        return emp;
+//
+//    }
 
     @GetMapping(value = "/list/withoutusers", produces = "application/json")
     public List<Employee> listwithoutusers() {
@@ -166,6 +194,9 @@ public class EmployeeController {
         if(user!= null && priv != null && priv.get("add")) {
             Employee empnic = dao.findByNIC(employee.getNic());
             Employee empnumber = dao.findByNumber(employee.getNumber());
+            employee.setDoassignment(LocalDate.now());
+
+            employee.setEmployeestatusId(daoEmployeestatus.getById(1));
             if (empnic != null)
                 return "Error-Validation : NIC Exists";
             else if (empnumber != null)

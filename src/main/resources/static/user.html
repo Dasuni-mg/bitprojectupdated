@@ -1,294 +1,755 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <title>Ceylon Engineering  : User Management </title>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
 
-    <!-- Bootstrap CSS -->
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous"
-    />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="icon" href="resources/image/cnew.jpg" type="image/x-icon">
 
-    <script src="resources/script/"></script>
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans:wght@500&display=swap" rel="stylesheet">
+
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="resources/style/common.css" />
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/side4.css">
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
     <script src="user.js"></script>
-    <script src="resources/datatable/js/datatables.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
-            rel="stylesheet"
-    />
-    <title>Hello,Gamage!</title>
+
+    <script src="resources/script/sweetalert.min.js"></script>
+
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+    <link href="resources/select2/css/select2.min.css" rel="stylesheet" />
+    <script src="resources/select2/js/select2.min.js"></script>
+
+
+    <link href='resources/style/clock.css' rel='stylesheet' />
+    <script src='resources/script/clock.js'></script>
+
+
 </head>
 <body>
-<!--script-->
-<script
-        type="module"
-        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-></script>
-<script
-        nomodule
-        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-></script>
 
-<div class="row w-100">
-    <!--Navigation-->
-    <div class="row s1 w-100">
-        <div class="navigation">
-            <h2 class="text-white"><span>Ga</span>mage <span>Re</span>staurant</h2>
-            <ul>
-                <li class="list">
-                    <a href="http://localhost:8080/dashboard">
-                <span class="icon"
-                ><ion-icon name="home-outline"></ion-icon
-                ></span>
-                        <span class="text"> Home</span>
-                    </a>
-                </li>
+<div class="wrapper">
+    <!-- Sidebar  -->
+
+    <nav id="sidebar" style="background-image: linear-gradient(rgba(0, 0, 0, 0.870),rgba(49, 183, 170, 0.75)) ,url('resources/image/ver.jpg')">
+        <div class="sidebar-header">
+
+            <h3><img class="cnew" src="../resources/image/cnew.jpg"><span>Ceylon Engineering</span> </h3>
+            <strong><img class="cnew" src="../resources/image/cnew.jpg"></strong>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="http://localhost:8080/mainwindow" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-tachometer-alt"></i><span class="viewPara"> &nbsp;Dashboard</span>
+                </a>
+
+            </li>
+
+            <li class="USER">
+                <a href="http://localhost:8080/user">
+                    <i class="fas fa-user-cog"></i><span class="viewPara">&nbsp; User</span>
+                </a>
+            </li>
+
+            <li class="PRIVILAGE">
+                <a href="http://localhost:8080/privilage">
+                    <i class="fas fa-user-shield"></i><span class="viewPara">&nbsp; Privilege</span>
+                </a>
+            </li>
+
+            <li>
+                <a  href="#customerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i> <span class="viewPara"> &nbsp;Customer</span>
+                </a>
+                <ul class="collapse list-unstyled" id="customerSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"><i class="fas fa-user-plus"></i> Customer Add</a>
+                    </li>
+                    <li class="CUSTOMERPAYMENT">
+                        <a href="http://localhost:8080/cuspayment"><i class="fas fa-hand-holding-usd"></i> Customer Payment</a>
+                    </li>
+                    <li class="RESERVATIONPROGRESS">
+                        <a href="http://localhost:8080/rprogress"><i class="fas fa-book"></i> Reservation Progress</a>
+                    </li>
 
 
-                <li class="list">
-                    <a href="#">
-                <span class="icon"
-                ><ion-icon name="notifications-outline"></ion-icon
-                ></span>
-                        <span class="text"> Notification</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                <span class="icon"
-                ><ion-icon name="settings-outline"></ion-icon
-                ></span>
-                        <span class="text"> Settings</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                <span class="icon"
-                ><ion-icon name="log-out-outline"></ion-icon
-                ></span>
-                        <span class="text"> Log out</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                <span class="icon"
-                ><ion-icon name="menu-outline"></ion-icon
-                ></span>
-                        <span class="text"> Menu</span>
-                    </a>
-                </li>
 
-                <div class="indicator"></div>
-            </ul>
+                </ul>
+            </li>
+
+            <li>
+
+                <a href="#serviceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i><span class="viewPara"> &nbsp;Service</span>
+                </a>
+                <ul class="collapse list-unstyled" id="serviceSubmenu">
+                    <li class="SERVICE">
+                        <a href="http://localhost:8080/service"><i class="fas fa-concierge-bell"></i> Main Services Add</a>
+                    </li>
+                    <li class="PLAN">
+                        <a href="http://localhost:8080/plan"><i class="fas fa-ruler-combined"></i> Service Plan</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+            <li>
+                <a  href="#reservationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book-open"></i> <span class="viewPara"> &nbsp;Reservation</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reservationSubmenu">
+                    <li class="RESERVATION">
+                        <a href="http://localhost:8080/reservation"><i class="fas fa-sticky-note"></i> Reservation Add</a>
+                    </li>
+                    <li class="DESIGNERASSIGNMENT">
+                        <a href="http://localhost:8080/designerassign"><i class="fas fa-user-edit"></i> Designer Add</a>
+                    </li>
+                    <li class="QSASSIGNMENT">
+                        <a href="http://localhost:8080/qsassign"><i class="fas fa-user-plus"></i> QS Add</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="ESTIMATION">
+                <a href="http://localhost:8080/estimation">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; Estimation</span>
+                </a>
+            </li>
+            <li class="BSR">
+                <a href="http://localhost:8080/bsr">
+                    <i class="fas fa-pencil-ruler"></i><span class="viewPara">&nbsp; BSR</span>
+                </a>
+            </li>
+            <li>
+                <a  href="#equipmentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-tools"></i> <span class="viewPara"> &nbsp;Equipment</span>
+                </a>
+                <ul class="collapse list-unstyled" id="equipmentSubmenu">
+                    <li class="EQUIPMENT">
+                        <a href="http://localhost:8080/equipment"><i class="fas fa-toolbox"></i></i> Equipmet Add</a>
+                    </li>
+                    <li class="EQSHIFTMENT">
+                        <a href="http://localhost:8080/eqshiftment"><i class="fas fa-toolbox"></i> Equipment Shiftment</a>
+                    </li>
+                    <li class="EQINVENTORY">
+                        <a href="http://localhost:8080/eqinventory"><i class="fas fa-toolbox"></i> Equipment Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a  href="#employeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-id-card"></i> <span class="viewPara"> &nbsp;Employee</span>
+                </a>
+                <ul class="collapse list-unstyled" id="employeeSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee"><i class="fas fa-id-card-alt"></i></i> Employee Add</a>
+                    </li>
+                    <li class="EMPSHIFTMENT">
+                        <a href="http://localhost:8080/empshiftment"><i class="fas fa-users-cog"></i> Employee Shiftment</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+            <li>
+                <a  href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-book"></i> <span class="viewPara"> &nbsp;Reports</span>
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+
+                    <li>
+                        <a href="http://localhost:8080/report/cusarrears"><i class="fas fa-users-cog"></i> Customer Arrears Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/noassignemp"><i class="fas fa-id-card-alt"></i></i> Available Employee Report</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/report/empworkingusage"><i class="fas fa-users-cog"></i> Employee Working Progress Report</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/report/expemp"><i class="fas fa-users-cog"></i> Expected Employee Report</a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:8080/report/eqallocation"><i class="fas fa-toolbox"></i> Expected Equipment Available Report</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <!-- Top Nav bar  -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info ml-3">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="privilegeSet" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #bae0f1;">
+                                    <h5 class="modal-title ceylonLog" style="color:#232348;"  id="exampleModalLongTitle">Choose the Main Modules</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="border-radius: 10px !important;padding: 26px;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                                    <!--start ul-->
+                                    <!--card start-->
+                                    <div class="card mainBlock">
+                                        <div class="card-body" style="padding: 26px;background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                                            <div class="row">
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center emp"
+                                                         onclick="window.location.assign('http://localhost:8080/employee')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user-friends"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">Employee</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center emp"
+                                                         onclick="window.location.assign('http://localhost:8080/user')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">USER</span>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 block_other">
+                                                    <div class="text-center"
+                                                         onclick="window.location.assign('http://localhost:8080/privilage')">
+                                                        <div class="card"   style="cursor: pointer;">
+                                                            <div class="card-header text-center" style="font-size:60px;color:#fff;background-color:#343a40;">
+                                                                <i class="fas fa-user-lock"></i>
+                                                            </div>
+                                                            <div class="card-body text-center" style="background-color: rgba(29,85,211,0.4);">
+                                                                <span style="font-weight: 600;font-size: 16px">Privilege</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!--card end  -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--modal end-->
+
+                    <!--employee,userprivilege start -->
+                    <button type="button" style="height: 38px;" class="btn btn-info ml-3 p-0" data-toggle="modal" data-target="#privilegeSet">
+                        <a class="nav-link justify-content-center"  href="#"><i
+                                class="fa fa-th"></i> </a>
+
+                    </button>
+
+
+
+
+
+                </div>
+
+
+                <div class="AnimateShadow">
+                    <h2 class="ceylonHead"> <i class="fas fa-building mr-2 animatesymboll"></i>Ceylon Engineering </h2>
+                </div>
+
+                <div id="clockdate">
+                    <div class="clockdate-wrapper">
+                        <div id="clock"></div>
+                        <div id="date"></div>
+                    </div>
+                </div>
+
+
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white ceylonLog"> Loged as : <a href="#" class="badge badge-success"><span id="spnDesignation"> </span> </a> </p>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 189px;">
+<!--                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>-->
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid" style="padding-top: 20px;">
+        <div class="card  cardstyle" id="ui" style="border: none;">
+            <div class="card-header text-left cardhead">
+                <h2 class="ceylonLog cardForheader"><img class="cnew" src="../resources/image/cnew.jpg">User Management</h2>
+            </div>
+            <div class="card-body" style="background-image: linear-gradient(rgba(255, 248, 248, 0.640),rgba(247, 237, 237, 0.80)) ,url('resources/image/exc.jpg')">
+                <div class="row">
+
+                    <div class="col-5 p-3 mr-2 formcontent" id="form">
+
+                        <form class="" id="userform" onsubmit="return false">
+
+                            <div class="row">
+                                <div class="col-md-12 pull-right text-right">
+                                    <span class="ceylonLog" style="color:red;">* Required</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="cmbEmployee"><b>Employee : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-user"></i></span>
+                                            <select id="cmbEmployee" class="form-control"   required
+                                                    onchange="comboBoxBinder(cmbEmployee,'','user','employeeId','olduser')"
+                                            ></select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtUsername"> <b>User Name : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-user-tag"></i></span>
+                                            <input type="text" class="form-control" id="txtUsername" required
+                                                   onkeyup="textFieldBinder(txtUsername,'[A-Za-z]+$','user','userName','olduser')"
+                                                   placeholder="Enter User Name Here">
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtPassword"><b>Password : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-key"></i></span>
+                                            <input type="password" id="txtPassword" class="form-control"  required
+                                                   placeholder="Enter Password Here"
+                                            >
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtEmail"> <b>Retype Password : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-key"></i></span>
+                                            <input type="password" class="form-control" id="txtRetypePassword" required
+                                                   placeholder="Re-Enter Password Here">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="cmbUserRoles"><b>User Roles : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-users-cog"></i></span>
+                                            <select id="cmbUserRoles" class="form-control js-example-basic-multiple"
+                                                    multiple="multiple" required
+                                                    onchange="cusComboBoxBinder()"
+                                            ></select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="row ceylonLog" for="chkStatus"> <b>User Status : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-user-shield"></i></span>
+                                            <input type="checkbox" class="row" checked id="chkStatus" required
+                                                   data-toggle="toggle" data-on="Active" data-off="In-Active" data-onstyle="success" data-offstyle="danger"
+                                                   data-width="120"
+                                                   onchange="CheckBoxBinder(chkStatus, '', 'user',
+                                                               'active', 'oldUser', false)">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtEmail"> <b>Email : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" id="txtEmail" required
+                                                   onkeyup="textFieldBinder(txtEmail,'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$','user','email','olduser')"
+                                                   placeholder="Enter Email Here">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtDescription"> <b>Description : </b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-sticky-note"></i></span>
+                                            <textarea  class="form-control"  id="txtDescription" placeholder="Enter Description (Optional)"
+
+                                            ></textarea>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="cmbEmployeeCreated"> <b>Created Employee : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-user"></i></span>
+                                            <select class="form-control" id="cmbEmployeeCreated" required></select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="dteDOCreated"> <b>Assign Date : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text" ><i class="fas fa-calendar"></i></span>
+                                            <input type="date" class="form-control" id="dteDOCreated" required>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <input class="btn btn-primary btn-sm" type="button" id="btnClear" value="Clear"
+                                       style="width: 25%" onclick="btnClearMC()" />
+                                <input class="btn btn-warning btn-sm" type="submit" id="btnUpdate" value="Update"
+                                       style="width: 25%" onclick="btnUpdateMC()" />
+                                <input class="btn btn-success btn-sm" id="btnAdd" value="Add" style="width: 25%"
+                                       type="submit" onclick="btnAddMC()" />
+                            </div>
+                        </form>
+
+                    </div>
+
+
+
+                    <div class="col p-3 ml-2 formcontent" id="employeeview">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <button class="btn btn-info ceylonLog" id="btnPrintTable" onclick="btnPrintTableMC()"><i class='fas fa-print mr-2'></i>Print Table</button>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="float-right input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                        <input placeholder="Search" class="form-control" type="text" id="txtSearchName" onblur="this.focus()" />
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+<!--                            <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table" id="btnPrintTable"  onclick="btnPrintTableMC()"/>-->
+<!--                            <div class="float-right">-->
+<!--                                <input placeholder="Search" class="form-control" type="text" id="txtSearchName" onblur="this.focus()" />-->
+<!--                            </div>-->
+
+                        </div>
+
+                        <hr />
+
+
+                        <div class="table-responsive" id="tableParent">
+
+                            <script>
+
+                                function getRoleColumn(ob) {
+                                    var rolelist = "";
+                                    for (x in ob.roles)
+                                        rolelist = rolelist + (rolelist == "" ? "" : ", ") + ob.roles[x].role
+                                    return rolelist;
+                                }
+
+                                function getStatus(ob) {
+                                    var status = "";
+                                   if(ob.active == 1)
+                                       status = "Active";
+                                   else
+                                       status = "Deactive";
+                                   return status;
+                                }
+                                var metadata = [
+                                    { name: 'Employee', search: true, datatype: 'text', property: 'employeeId.callingname' },
+                                    { name: 'Username', search: true, datatype: 'text', property: 'userName' },
+                                    { name: 'Roles', search: true, datatype: 'text', property: getRoleColumn },
+                                    { name: 'Status', search: true, datatype: 'text', property: getStatus }
+                                ];
+
+                                table("tableParent", "tblUser", metadata, [3, 10, 15, 30, 500, 1000], btnSearchMC);
+
+                            </script>
+
+
+                        </div>
+                        <div>
+                            <div style="display: inline-block ; float: left">
+                                <select class="form-control input" id="cmbPageSize" style="width: 80px;">
+                                    <option selected value="3">3</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="30">30</option>
+                                    <option value="500">500</option>
+                                    <option value="1000">1000</option>
+                                </select>
+                                <script>
+                                    cmbPageSize.onchange = function chnagePageSize() {
+                                        activepage = 1;
+                                        btnSearchMC();
+                                    };
+                                </script>
+                            </div>
+                            <div style="display: inline-block; margin-left: 10px;">
+                                <ul id="pagination" class="pagination"></ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer cardhead">
+                <div id="err">
+<!--                    <h3>Error Log</h3>-->
+                </div>
+            </div>
         </div>
     </div>
-    <!--Navigation movement-->
-    <script>
-        const list = document.querySelectorAll(".list");
 
-        function activeLink() {
-            list.forEach((item) => item.classList.remove("active"));
-            this.classList.add("active");
-        }
-
-        list.forEach((item) => item.addEventListener("click", activeLink));
-    </script>
-
-    <!--Form-->
-    <div class="row text-black m-3 p-2">
-        <h2>
-            User Management
-        </h2>
     </div>
-    <div class="row m-8">
-        <div class="col-md-9">
-            <div class="row w-100 m-3 p-4">
-                <div class="col-md-4">
-                    <div class="form-group text-white">
-                        <div class="inputBox">
+</div>
 
-                            <input
-                                    id="textUserName"
-                                    type="text"
-                                    class="form-control"
-                                    style="border:2.5px solid rgba(142,8,232,0.72); "
-                                    placeholder="Enter Username No"
-                                    required
-                            />
-                            <span class="text-dark">User Name <b style="color:red; font-size:24px; padding-left: 10px">*</b></span>
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group text-white">
-                        <div class="inputBox">
-
-                            <input
-                                    id="textPwd"
-                                    type="text"
-                                    class="form-control"
-                                    style="border:2.5px solid rgba(142,8,232,0.72); "
-                                    placeholder="Enter Password"
-                                    required
-                                    onkeyup="textFieldBinder(textPwd,'^[A-Z][a-z]{3,10}$','user','password','olduser')"/>
-
-
-                            <span class="text-dark">Password <b style="color:red; font-size:24px; padding-left: 10px">*</b></span>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group text-white">
-                        <div class="inputBox">
-
-                            <input
-                                    id="txtEmail"
-                                    type="text"
-                                    class="form-control"
-                                    style="border:2.5px solid rgba(142,8,232,0.72); "
-                                    placeholder="Enter Full Name"
-                                    required
-                                    onkeyup="textFieldBinder(txtEmail,'^(([A-Z][a-z]{1,16}[ ]{0,1})+([A-Z][a-z]{1,16})+)$','user','email','olduser')"
-                            />
-                            <span class="text-dark">Email <b style="color:red; font-size:24px; padding-left: 10px">*</b></span>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row w-100 m-3 p-4">
-                <div class="col-md-4">
-                    <div class="form-group text-white">
-                        <div class="inputBox">
-                            <input
-                                    id="txtStatus"
-                                    type="text"
-                                    class="form-control"
-                                    style="border:2.5px solid rgba(142,8,232,0.72); "
-                                    placeholder="Enter Status"
-                                    required
-                                    onkeyup="textFieldBinder(txtStatus,'^(([0-9]{9}[VvXx])|([0-9]){12})$ ','user','status','olduser')"
-                            />
-                            <span class="text-dark">Status<b style="color:red; font-size:24px; padding-left: 10px">*</b></span>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
                         </div>
                     </div>
-                </div>
+                </form>
 
 
             </div>
-
-            <!--Clear/Update/Delete buttons-->
-            <div class="row m-3 p-4">
-                <div class="d-grid gap-2 d-md-block">
-                    <button
-                            class="btn button btn-lg  px-5"
-                            type="button"
-                    >
-                        Add
-                    </button>
-                                      <button
-                            class="btn button btn-lg  px-5"
-                            type="button"
-                    >
-                        Delete
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-
-            <div class="datetime">
-                <div class="time"></div>
-                <div class="date"></div>
-            </div>
-
-            <script>
-                const timeElement = document.querySelector(".time");
-                const dateElement = document.querySelector(".date");
-
-                /**
-                 * @param {Date} date
-                 */
-                function formatTime(date) {
-                    const hours12 = date.getHours() % 12 || 12;
-                    const minutes = date.getMinutes();
-                    const isAm = date.getHours() < 12;
-
-                    return `${hours12
-                        .toString()
-                        .padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${
-                        isAm ? "AM" : "PM"
-                    }`;
-                }
-
-                /**
-                 * @param {Date} date
-                 */
-                function formatDate(date) {
-                    const DAYS = [
-                        "Sunday",
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
-                    ];
-                    const MONTHS = [
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December",
-                    ];
-
-                    return `${DAYS[date.getDay()]}, ${
-                        MONTHS[date.getMonth()]
-                    } ${date.getDate()} ${date.getFullYear()}`;
-                }
-
-                setInterval(() => {
-                    const now = new Date();
-
-                    timeElement.textContent = formatTime(now);
-                    dateElement.textContent = formatDate(now);
-                }, 200);
-            </script>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h5 class="card-title">User History</h5>
-                    <div class="d-flex justify-content-around align-items-center">
-                        <img
-                                src="./resources/image/user.png"
-                                width="90px"
-                                height="90px"
-                                alt="user"
-                        />
-                        <a
-                                href="http://localhost:8080/usertable"
-                                type="button"
-                                class="btn button-view"
-                        >
-                            View History
-                        </a>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
             </div>
         </div>
     </div>
 </div>
 </body>
+
 </html>

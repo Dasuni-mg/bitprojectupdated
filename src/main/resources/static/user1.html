@@ -29,11 +29,13 @@
     <script src="resources/select2/js/select2.min.js"></script>
     <script src="resources/script/sweetalert.min.js"></script>
 
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
 
     <script src="resources/datatable/js/datatables.min.js"></script>
     <script src="resources/script/innertablefunctions.js"></script>
     <script src="resources/script/common.bitproject.js"></script>
-    <script src="material1.js"></script>
+    <script src="user.js"></script>
 
 
     <title>Hello,Gamage!</title>
@@ -57,7 +59,7 @@
 
             <ul>
                 <li class="list">
-                    <a href="#">
+                    <a href="http://localhost:8080/dashboard">
                 <span class="icon"
                 ><ion-icon name="home-outline"></ion-icon
                 ></span>
@@ -115,124 +117,137 @@
 
     <!--Form-->
     <div class="bgForm">
-        <div class="row  text-black-50 ">
+        <div class="row  text-black">
             <h3 class="p-3">
-               Material Management
+               User Management
             </h3>
         </div>
         <div class="row m-8 ">
             <div class="col-md-9">
-                <div class=" col-md-12">
-                    <div class="card" style="background-color: transparent;">
+                <div class="row">
 
-                        <div class=" card-body">
+                    <div class=" p-3 mr-2 formcontent" id="form">
+
+                        <form class="m-10" id="userform" onsubmit="return false">
+
+
+                            <div class="row ml-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="cmbEmployee"><b>Employee : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <select id="cmbEmployee" class="form-control"   required
+                                                    onchange="comboBoxBinder(cmbEmployee,'','user','employeeId','olduser')"
+                                            ></select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtUsername"> <b>User Name : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <input type="text" class="form-control" id="txtUsername" required
+                                                   onkeyup="textFieldBinder(txtUsername,'[A-Za-z]+$','user','userName','olduser')"
+                                                   placeholder="Enter User Name Here">
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ml-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtPassword"><b>Password : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <input type="password" id="txtPassword" class="form-control"  required
+                                                   placeholder="Enter Password Here"
+                                            >
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtEmail"> <b>Retype Password : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <input type="password" class="form-control" id="txtRetypePassword" required
+                                                   placeholder="Re-Enter Password Here">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ml-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="cmbUserRoles"><b>User Roles : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <select id="cmbUserRoles" class="form-control js-example-basic-multiple"
+                                                    multiple="multiple" required
+                                                    onchange="cusComboBoxBinder()"
+                                            ></select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="row ceylonLog" for="chkStatus"> <b>User Status : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <input type="checkbox" class="row" checked id="chkStatus" required
+                                                   data-toggle="toggle" data-on="Active" data-off="In-Active" data-onstyle="success" data-offstyle="danger"
+                                                   data-width="120"
+                                                   onchange="CheckBoxBinder(chkStatus, '', 'user',
+                                                               'active', 'oldUser', false)">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
 
                             <div class="row ">
-                                <form class="" id="customerform" onsubmit="return false">
-                                    <div class="row mt-2">
-                                        <div class="col-md-2"></div>
-                                        <!--form-->
-                                        <div class="col-md-12 p-3">
 
-                                            <div class="row m-2 p-3"   >
-
-
-                                                <!--Material Code-->
-                                                <div class="col-md-4">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtMaterialCode" class=" "><b>Material-Code:
-                                                            <span style="color: red;">*</span></b> </label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtMaterialCode"
-                                                                   placeholder="Enter material code"
-                                                                   required data-toggle="tooltip"
-                                                                   data-placement="bottom"
-                                                                   title="Enter five digits for Registration No-Eg: 12345"
-                                                                   onkeyup="textFieldBinder(txtMaterialCode,'^[0-9]{4}$','material','materialcode','oldmaterial')">                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Material Category-->
-                                                <div class="col-md-4" >
-                                                    <div class="form-group text-dark  ">
-                                                        <label for="cmbMaterialCategory" class=""><b>Material Category:</b>
-                                                        </label>
-                                                        <div class="input-group">
-                                                            <select id="cmbMaterialCategory"
-                                                                    class="form-control"
-                                                                    data-toggle="tooltip" data-placement="bottom"
-                                                                    title="Select Material Category"
-                                                                    required
-                                                                    onchange="comboBoxBinder(cmbMaterialCategory,'','material','materialcategory_id','oldmaterial')">
-                                                            </select>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Material Name-->
-                                                <div class="col-md-4">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtMaterialName" class="  "> <b>Material Name:
-                                                        </b> <span style="color: red;">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtMaterialName"
-                                                                   placeholder="Enter material name"
-                                                                   required
-                                                                   data-toggle="tooltip" data-placement="bottom"
-                                                                   title="Material Name"
-                                                                   onkeyup="textFieldBinder(txtMaterialName,'^.*$','material','materialname','oldmaterial')">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-
-                                            </div>
-
-                                            <div class="row m-2 p-3"   >
-                                                <!-- Unit size -->
-                                                <div class="col-md-4 ">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtUnitSize" class="  "><b>Unit size :
-                                                        </b> <span style="color: red;">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   id="txtUnitSize"
-                                                                   placeholder="Enter unit size"
-                                                                   required
-                                                                   data-toggle="tooltip" data-placement="bottom"
-                                                                   title="Enter Unit size"
-                                                                   onkeyup="textFieldBinder(txtUnitSize,'^.*$','material','unitsize','oldmaterial')">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Unit size -->
-                                                <div class="col-md-4 ">
-                                                    <div class="form-group text-dark ">
-                                                        <label for="txtUnitSize" class="  "><b>Unit Type :
-                                                        </b> <span style="color: red;">*</span></label>
-                                                        <div class="input-group">
-                                                            <select id="cmbUnitType"
-                                                                    class="form-control"
-                                                                    required
-                                                                    data-toggle="tooltip" data-placement="bottom"
-                                                                    title="Select a Unit type"
-                                                                    onchange="comboBoxBinder(cmbUnitType,'','material','unittype_id','oldmaterial')">
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="txtEmail"> <b>Email : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <input type="email" class="form-control" id="txtEmail" required
+                                                   onkeyup="textFieldBinder(txtEmail,'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$','user','email','olduser')"
+                                                   placeholder="Enter Email Here">
                                         </div>
-                                        <div class="row ">
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="ceylonLog" for="dteDOCreated"> <b>Assign Date : <span
+                                                style="color:red;">*</span></b></label>
+                                        <div class="input-group flex-nowrap">
+                                            <input type="date" class="form-control" id="dteDOCreated" required>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row ">
 
 
                                 <pre>
@@ -242,38 +257,22 @@
 
                                 </pre>
 
-                                        </div>
-
-                                    </div>
-                                </form>
-
                             </div>
-                            <div class="col-md-2"></div>
 
-                            <!--Clear/Update/Delete buttons-->
-                            <div class="row mt-2 p-2">
-                                <div class="col-md-12">
 
-                                    <div class="text-right">
-                                        <button class="btn button-86 " type="button" id="btnClear"
-                                                style="width: 25%">
-                                            Clear
-                                        </button>
-                                        <button class="btn button-86 " type="submit" id="btnUpdate"
-                                                style="width: 25%">
-                                            Update
-                                        </button>
-                                        <button class="btn button-86" style="width: 25%" type="submit"
-                                                id="btnAdd">
-                                            Add
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            </form>
+                        </form>
+                        <div class="text-right ">
+                            <input class="btn button-86" type="button" id="btnClear" value="Clear"
+                                   style="width: 25%" onclick="btnClearMC()" />
+                            <input class="btn button-86" type="submit" id="btnUpdate" value="Update"
+                                   style="width: 25%" onclick="btnUpdateMC()" />
+                            <input class="btn button-86" id="btnAdd" value="Add" style="width: 25%"
+                                   type="submit" onclick="btnAddMC()" />
                         </div>
-
                     </div>
+
+
+
 
                 </div>
             </div>
@@ -345,16 +344,16 @@
                 </script>
                 <div class="card mt-4">
                     <div class="card-body">
-                        <h5 class="card-title">Material History</h5>
+                        <h5 class="card-title">User History</h5>
                         <div class="d-flex justify-content-around align-items-center">
                             <img
-                                    src="./resources/image/cart/material.png"
+                                    src="./resources/image/cart/user.png"
                                     width="90px"
                                     height="90px"
                                     alt="deliver"
                             />
                             <a
-                                    href="http://localhost:8080/material"
+                                    href="http://localhost:8080/USER1"
                                     type="button"
                                     class="btn button-view"
                                     data-toggle="modal" data-target="#tableview"
@@ -379,7 +378,7 @@
                             <div class="container-fluid">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-3">
-                                        <a class="btn button  font-weight-bold" href="http://localhost:8080/qrequest">Q-Request</a>
+                                        <a class="btn button  font-weight-bold" href="http://localhost:8080/user">User</a>
 
                                     </div>
                                     <div class="col-md-3">
@@ -473,55 +472,29 @@
 
                                         <script>
 
-                                            function getNameColumn(ob) {
-                                                return ob.callingname + "(" + ob.number + ")";
+                                            function getRoleColumn(ob) {
+                                                var rolelist = "";
+                                                for (x in ob.roles)
+                                                    rolelist = rolelist + (rolelist == "" ? "" : ", ") + ob.roles[x].role
+                                                return rolelist;
                                             }
 
+                                            function getStatus(ob) {
+                                                var status = "";
+                                                if(ob.active == 1)
+                                                    status = "Active";
+                                                else
+                                                    status = "Deactive";
+                                                return status;
+                                            }
                                             var metadata = [
-                                                {
-                                                    name: 'Material Code',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialcode'
-                                                },
-                                                {
-                                                    name: 'Material Name',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialname'
-                                                },
-                                                {
-                                                    name: 'Unit Size',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'unitsize'
-                                                },
-                                                {
-                                                    name: 'Added Date',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'addeddate'
-                                                },
-                                                {
-                                                    name: 'Material Status',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialstatus_id.name'
-                                                },
-                                                {
-                                                    name: 'Material Categoory',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'materialcategory_id.name'
-                                                },
-                                                {
-                                                    name: 'Unit Type',
-                                                    search: true,
-                                                    datatype: 'text',
-                                                    property: 'unittype_id.name'
-                                                },
+                                                { name: 'Employee', search: true, datatype: 'text', property: 'employeeId.callingname' },
+                                                { name: 'Username', search: true, datatype: 'text', property: 'userName' },
+                                                { name: 'Roles', search: true, datatype: 'text', property: getRoleColumn },
+                                                { name: 'Status', search: true, datatype: 'text', property: getStatus }
                                             ];
-                                            table("tableParent", "tblMaterial", metadata, true);
+                                            table("tableParent", "tblUser", metadata, true);
+
 
                                         </script>
 
